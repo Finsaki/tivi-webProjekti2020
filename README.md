@@ -3,7 +3,7 @@ This is the repository for university web-project group assignment
 
 Project instructions in finnish:
 
-Projektityö :)
+Projektityö =)
 
 Tavoite
 Toteutetaan ”Web-sovelluskehitys” -kurssilla projektityönä pieni web-projekti, jossa on
