@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="63b3cfa3-f83b-42b9-ba41-4e0d27a3daab" name="Default Changelist" comment="hymynaama lisätty">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="roosa.laukkanen@metropolia.fi" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
+  <component name="ProjectId" id="1kYTKcJ76Tz3L7YwD61XuRwXnwy" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="63b3cfa3-f83b-42b9-ba41-4e0d27a3daab" name="Default Changelist" comment="" />
+      <created>1605876464304</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605876464304</updated>
+      <workItem from="1605876477496" duration="2110000" />
+    </task>
+    <task id="LOCAL−00001" summary="hymynaama lisätty">
+      <created>1605876683632</created>
+      <option name="number" value="LOCAL−00001" />
+      <option name="presentableId" value="LOCAL−00001" />
+      <updated>1605876683632</updated>
+    </task>
+    <task id="LOCAL−00002" summary="hymynaama lisätty">
+      <created>1605877062223</created>
+      <option name="number" value="LOCAL−00002" />
+      <option name="presentableId" value="LOCAL−00002" />
+      <updated>1605877062223</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="hymynaama lisätty" />
+    <option name="LAST_COMMIT_MESSAGE" value="hymynaama lisätty" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="248" y="29" key="CommitChangelistDialog2" timestamp="1605877174496">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="248" y="29" key="CommitChangelistDialog2/0.0.1440.860@0.0.1440.860" timestamp="1605877174496" />
+    <state x="499" y="172" key="FileChooserDialogImpl" timestamp="1605877930662">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="499" y="172" key="FileChooserDialogImpl/0.0.1440.860@0.0.1440.860" timestamp="1605877930662" />
+    <state x="312" y="151" key="Vcs.Push.Dialog.v2" timestamp="1605877065300">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="312" y="151" key="Vcs.Push.Dialog.v2/0.0.1440.860@0.0.1440.860" timestamp="1605877065300" />
+    <state x="529" y="347" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605877140448">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="529" y="347" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.860@0.0.1440.860" timestamp="1605877140448" />
+  </component>
+</project>
