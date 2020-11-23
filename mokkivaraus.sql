@@ -11,6 +11,11 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+
+-- Dumping database structure for mokkivaraus
+CREATE DATABASE IF NOT EXISTS `mokkivaraus` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `mokkivaraus`;
+
 -- Dumping structure for table mokkivaraus.asiakas
 CREATE TABLE IF NOT EXISTS `asiakas` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
