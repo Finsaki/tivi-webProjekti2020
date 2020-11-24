@@ -1,17 +1,27 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Mökkivarausjärjestelmä</h1>
+    <navipalkki></navipalkki>
+    <mokkilistaus></mokkilistaus>
+    <asiakastietolomake></asiakastietolomake>
+    <varausnakyma></varausnakyma>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Varausnakyma from './components/Varausnakyma';
+import Navipalkki from './components/Navipalkki';
+import Mokkilistaus from './components/Mokkilistaus';
+import Asiakastietolomake from './components/Asiakastietolomake';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Asiakastietolomake,
+    Mokkilistaus,
+    Navipalkki,
+    Varausnakyma
   }
 }
 </script>
