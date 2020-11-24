@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="63b3cfa3-f83b-42b9-ba41-4e0d27a3daab" name="Default Changelist" comment="hymynaama lisätty" />
+    <list default="true" id="2a6bb005-8449-4670-aa12-e73acd569608" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webprojekti/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/webprojekti/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webprojekti/src/components/Asiakastietolomake.vue" beforeDir="false" afterPath="$PROJECT_DIR$/webprojekti/src/components/Asiakastietolomake.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webprojekti/src/components/Navipalkki.vue" beforeDir="false" afterPath="$PROJECT_DIR$/webprojekti/src/components/Navipalkki.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -29,7 +41,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/webprojekti" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
