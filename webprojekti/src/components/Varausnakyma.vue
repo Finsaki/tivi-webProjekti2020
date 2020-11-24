@@ -1,5 +1,5 @@
 <template>
-    
+    <h2>Varausnakyma.vue</h2>
 </template>
 
 <script>
