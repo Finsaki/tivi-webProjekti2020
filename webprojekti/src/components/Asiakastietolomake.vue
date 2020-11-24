@@ -4,7 +4,7 @@
         <p>Olet varaamassa mökkiä:</p>
         <p>*TÄHÄN MÖKIN TIEDOT*</p>
         <p>Syötä tietosi alla oleviin kenttiin. Täytäthän kaikki kentät.</p>
-        <form>
+        <form v-on:submit.prevent="teeVaraus">
             <label>Etunimi</label>
             <input v-model="asiakas.etunimi" type="text"/>
             <label>Sukunimi</label>
@@ -20,15 +20,15 @@
             <label>Sähköpostiosoite</label>
             <input v-model="asiakas.email" type="text"/>
             <button>Tee varaus</button>
-            <button>Peruuta</button>
         </form>
+        <button v-on:click="peruutaVaraus">Peruuta</button>
     </div>
 </template>
 
 <script>
   export default {
     name: 'asiakastietolomake',
-    data(){
+    data() {
       return {
         asiakas: {
           etunimi: '',
@@ -39,6 +39,15 @@
           puhnro:'',
           email:'',
         }
+      }
+    },
+    methods: {
+      teeVaraus(){
+        console.log('Varaus Tehty');
+
+      },
+      peruutaVaraus(){
+        console.log('Varaus peruttu');
       }
     }
   };
