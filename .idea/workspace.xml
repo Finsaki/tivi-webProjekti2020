@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2a6bb005-8449-4670-aa12-e73acd569608" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webprojekti/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/webprojekti/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webprojekti/src/components/Asiakastietolomake.vue" beforeDir="false" afterPath="$PROJECT_DIR$/webprojekti/src/components/Asiakastietolomake.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webprojekti/src/components/Navipalkki.vue" beforeDir="false" afterPath="$PROJECT_DIR$/webprojekti/src/components/Navipalkki.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webprojekti/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webprojekti/public/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +65,13 @@
       <option name="presentableId" value="LOCAL−00002" />
       <updated>1605877062223</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL−00003" summary="Lisätty sisältöä asiakaslomakkeeseen ja navipalkkiin">
+      <created>1606207457270</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1606207457270</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -75,21 +79,24 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="hymynaama lisätty" />
-    <option name="LAST_COMMIT_MESSAGE" value="hymynaama lisätty" />
+    <MESSAGE value="Lisätty sisältöä asiakaslomakkeeseen ja navipalkkiin" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lisätty sisältöä asiakaslomakkeeseen ja navipalkkiin" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="248" y="29" key="CommitChangelistDialog2" timestamp="1605877174496">
-      <screen x="0" y="0" width="1440" height="860" />
+    <state x="1771" y="35" key="CommitChangelistDialog2" timestamp="1606207455485">
+      <screen x="1440" y="0" width="1920" height="1040" />
     </state>
+    <state x="1771" y="35" key="CommitChangelistDialog2/0.0.1440.860/1440.0.1920.1040@1440.0.1920.1040" timestamp="1606207455485" />
     <state x="248" y="29" key="CommitChangelistDialog2/0.0.1440.860@0.0.1440.860" timestamp="1605877174496" />
     <state x="665" y="208" key="FileChooserDialogImpl" timestamp="1606157112083">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="499" y="172" key="FileChooserDialogImpl/0.0.1440.860@0.0.1440.860" timestamp="1605877930662" />
     <state x="665" y="208" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606157112083" />
-    <state x="312" y="151" key="Vcs.Push.Dialog.v2" timestamp="1605877065300">
-      <screen x="0" y="0" width="1440" height="860" />
+    <state x="1856" y="183" key="Vcs.Push.Dialog.v2" timestamp="1606207459023">
+      <screen x="1440" y="0" width="1920" height="1040" />
     </state>
+    <state x="1856" y="183" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1040@1440.0.1920.1040" timestamp="1606207459023" />
     <state x="312" y="151" key="Vcs.Push.Dialog.v2/0.0.1440.860@0.0.1440.860" timestamp="1605877065300" />
     <state x="529" y="347" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605877140448">
       <screen x="0" y="0" width="1440" height="860" />
