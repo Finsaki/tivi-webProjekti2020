@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2a6bb005-8449-4670-aa12-e73acd569608" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webprojekti/src/components/Asiakastietolomake.vue" beforeDir="false" afterPath="$PROJECT_DIR$/webprojekti/src/components/Asiakastietolomake.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webprojekti/src/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/webprojekti/src/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +14,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -37,7 +38,18 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/webprojekti" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="server.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/webprojekti/src/server.js" working-dir="$PROJECT_DIR$/webprojekti/src">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.server.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
@@ -45,13 +57,14 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="63b3cfa3-f83b-42b9-ba41-4e0d27a3daab" name="Default Changelist" comment="" />
+      <changelist id="2a6bb005-8449-4670-aa12-e73acd569608" name="Default Changelist" comment="" />
       <created>1605876464304</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1605876464304</updated>
       <workItem from="1605876477496" duration="2110000" />
       <workItem from="1606157068302" duration="45000" />
+      <workItem from="1606301183645" duration="4222000" />
     </task>
     <task id="LOCAL−00001" summary="hymynaama lisätty">
       <created>1605876683632</created>
@@ -77,22 +90,37 @@
       <option name="presentableId" value="LOCAL−00004" />
       <updated>1606207625131</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL−00005" summary="Lisätty node express ja server-tiedosto">
+      <created>1606215138127</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1606215138128</updated>
+    </task>
+    <task id="LOCAL−00006" summary="Alustava tietojen haku tietokannasta">
+      <created>1606219969409</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1606219969409</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="hymynaama lisätty" />
     <MESSAGE value="Lisätty sisältöä asiakaslomakkeeseen ja navipalkkiin" />
     <MESSAGE value="Muokattu index.html otsikko ja kieli" />
-    <option name="LAST_COMMIT_MESSAGE" value="Muokattu index.html otsikko ja kieli" />
+    <MESSAGE value="Lisätty node express ja server-tiedosto" />
+    <MESSAGE value="Alustava tietojen haku tietokannasta" />
+    <option name="LAST_COMMIT_MESSAGE" value="Alustava tietojen haku tietokannasta" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1771" y="35" key="CommitChangelistDialog2" timestamp="1606207623574">
-      <screen x="1440" y="0" width="1920" height="1040" />
+    <state x="221" y="0" key="CommitChangelistDialog2" timestamp="1606305607387">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="221" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1606305607387" />
     <state x="1771" y="35" key="CommitChangelistDialog2/0.0.1440.860/1440.0.1920.1040@1440.0.1920.1040" timestamp="1606207623574" />
     <state x="248" y="29" key="CommitChangelistDialog2/0.0.1440.860@0.0.1440.860" timestamp="1605877174496" />
     <state x="665" y="208" key="FileChooserDialogImpl" timestamp="1606157112083">
@@ -100,14 +128,36 @@
     </state>
     <state x="499" y="172" key="FileChooserDialogImpl/0.0.1440.860@0.0.1440.860" timestamp="1605877930662" />
     <state x="665" y="208" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606157112083" />
-    <state x="1856" y="183" key="Vcs.Push.Dialog.v2" timestamp="1606207627531">
-      <screen x="1440" y="0" width="1920" height="1040" />
+    <state x="263" y="0" key="FileDocumentManager.FileCacheConflict" timestamp="1606219245236">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="263" y="0" key="FileDocumentManager.FileCacheConflict/0.0.1280.680@0.0.1280.680" timestamp="1606219245236" />
+    <state width="1259" height="163" key="GridCell.Tab.0.bottom" timestamp="1606305607443">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1606305607443" />
+    <state width="1259" height="163" key="GridCell.Tab.0.center" timestamp="1606305607443">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1606305607443" />
+    <state width="1259" height="163" key="GridCell.Tab.0.left" timestamp="1606305607443">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1606305607443" />
+    <state width="1259" height="163" key="GridCell.Tab.0.right" timestamp="1606305607443">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1606305607443" />
+    <state x="277" y="120" key="Vcs.Push.Dialog.v2" timestamp="1606219983160">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="277" y="120" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1606219983160" />
     <state x="1856" y="183" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1040@1440.0.1920.1040" timestamp="1606207627531" />
     <state x="312" y="151" key="Vcs.Push.Dialog.v2/0.0.1440.860@0.0.1440.860" timestamp="1605877065300" />
-    <state x="529" y="347" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605877140448">
-      <screen x="0" y="0" width="1440" height="860" />
+    <state x="470" y="274" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606301200579">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="470" y="274" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1606301200579" />
     <state x="529" y="347" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.860@0.0.1440.860" timestamp="1605877140448" />
   </component>
 </project>
