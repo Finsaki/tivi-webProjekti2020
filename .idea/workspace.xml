@@ -39,6 +39,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/webprojekti" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="coverage" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -64,7 +65,13 @@
       <updated>1605876464304</updated>
       <workItem from="1605876477496" duration="2110000" />
       <workItem from="1606157068302" duration="45000" />
-      <workItem from="1606301183645" duration="4222000" />
+      <workItem from="1606301183645" duration="5486000" />
+      <workItem from="1606317117332" duration="1637000" />
+      <workItem from="1606374410552" duration="250000" />
+      <workItem from="1606374677857" duration="648000" />
+      <workItem from="1606375342293" duration="12240000" />
+      <workItem from="1606415993910" duration="2898000" />
+      <workItem from="1606476012685" duration="3928000" />
     </task>
     <task id="LOCAL−00001" summary="hymynaama lisätty">
       <created>1605876683632</created>
@@ -102,7 +109,13 @@
       <option name="presentableId" value="LOCAL−00006" />
       <updated>1606219969409</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL−00007" summary="Tietokantahaut tauluille ja niistä yksittäisiä ulos id:llä, ja asiakkaan lisäys POSTilla.">
+      <created>1606305702701</created>
+      <option name="number" value="LOCAL−00007" />
+      <option name="presentableId" value="LOCAL−00007" />
+      <updated>1606305702701</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,13 +127,15 @@
     <MESSAGE value="Muokattu index.html otsikko ja kieli" />
     <MESSAGE value="Lisätty node express ja server-tiedosto" />
     <MESSAGE value="Alustava tietojen haku tietokannasta" />
-    <option name="LAST_COMMIT_MESSAGE" value="Alustava tietojen haku tietokannasta" />
+    <MESSAGE value="Tietokantahaut tauluille ja niistä yksittäiset id:llä, sekä asiakkaan lisäys POSTilla." />
+    <MESSAGE value="Tietokantahaut tauluille ja niistä yksittäisiä ulos id:llä, ja asiakkaan lisäys POSTilla." />
+    <option name="LAST_COMMIT_MESSAGE" value="Tietokantahaut tauluille ja niistä yksittäisiä ulos id:llä, ja asiakkaan lisäys POSTilla." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="221" y="0" key="CommitChangelistDialog2" timestamp="1606305607387">
+    <state x="221" y="0" key="CommitChangelistDialog2" timestamp="1606305701793">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="221" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1606305607387" />
+    <state x="221" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1606305701793" />
     <state x="1771" y="35" key="CommitChangelistDialog2/0.0.1440.860/1440.0.1920.1040@1440.0.1920.1040" timestamp="1606207623574" />
     <state x="248" y="29" key="CommitChangelistDialog2/0.0.1440.860@0.0.1440.860" timestamp="1605877174496" />
     <state x="665" y="208" key="FileChooserDialogImpl" timestamp="1606157112083">
@@ -132,32 +147,40 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="263" y="0" key="FileDocumentManager.FileCacheConflict/0.0.1280.680@0.0.1280.680" timestamp="1606219245236" />
-    <state width="1259" height="163" key="GridCell.Tab.0.bottom" timestamp="1606305607443">
+    <state width="1259" height="163" key="GridCell.Tab.0.bottom" timestamp="1606479967817">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1606305607443" />
-    <state width="1259" height="163" key="GridCell.Tab.0.center" timestamp="1606305607443">
+    <state width="1259" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1606479967817" />
+    <state width="1259" height="163" key="GridCell.Tab.0.center" timestamp="1606479967817">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1606305607443" />
-    <state width="1259" height="163" key="GridCell.Tab.0.left" timestamp="1606305607443">
+    <state width="1259" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1606479967817" />
+    <state width="1259" height="163" key="GridCell.Tab.0.left" timestamp="1606479967817">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1606305607443" />
-    <state width="1259" height="163" key="GridCell.Tab.0.right" timestamp="1606305607443">
+    <state width="1259" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1606479967817" />
+    <state width="1259" height="163" key="GridCell.Tab.0.right" timestamp="1606479967817">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1606305607443" />
-    <state x="277" y="120" key="Vcs.Push.Dialog.v2" timestamp="1606219983160">
+    <state width="1259" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1606479967817" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1606376033001">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="277" y="120" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1606219983160" />
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1606376033001" />
+    <state x="277" y="120" key="Vcs.Push.Dialog.v2" timestamp="1606305766434">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="277" y="120" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1606305766434" />
     <state x="1856" y="183" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1040@1440.0.1920.1040" timestamp="1606207627531" />
     <state x="312" y="151" key="Vcs.Push.Dialog.v2/0.0.1440.860@0.0.1440.860" timestamp="1605877065300" />
-    <state x="470" y="274" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606301200579">
+    <state x="470" y="274" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606374868073">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="470" y="274" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1606301200579" />
+    <state x="470" y="274" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1606374868073" />
     <state x="529" y="347" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.860@0.0.1440.860" timestamp="1605877140448" />
+    <state x="354" y="132" key="git4idea.merge.GitPullDialog" timestamp="1606375364729">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="354" y="132" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1606375364729" />
   </component>
 </project>
