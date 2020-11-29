@@ -146,14 +146,57 @@ app.get('/api/varaukset/id', function (req, res) {
     })()
 });
 
-app.post('/api/asiakkaat/add', function (req, res) {
+
+app.get('/api/varaukset/pvm', function (req, res) {
+    let q = url.parse(req.url, true).query;
+    let id = q.id;
+    let startDate = q.start;
+    let endDate = q.end;
+    let alteredResult;
+    let string;
+    console.log(startDate);
+    console.log(endDate);
+    let sql = "SELECT * FROM varaus WHERE mokkiid = ? AND ((alkupvm <=  ? AND loppupvm >=  ?) OR  " +
+        "(alkupvm <= ? AND loppupvm >= ?) OR (alkupvm >= ? AND loppupvm <= ?)) ";
+
+    (async () => {
+        try {
+            const rows = await query(sql,[id, startDate, startDate, endDate, endDate, startDate, endDate]);
+            string = JSON.stringify(rows);
+            alteredResult = '{"numOfRows":'+rows.length+',"rows":'+string+'}';
+            console.log(rows);
+            if (rows.length > 0){
+                res.send("Mökki on varattu halutulla ajalla!")
+            }else{
+                res.send("Varaus onnistuu!");
+            }
+
+        }
+        catch (err) {
+            console.log("Database error!"+ err);
+        }
+    })()
+});
+
+
+app.post('/api/asiakkaat/uusi', function (req, res) {
     console.log("Got a POST request for the homepage");
-    //let q = url.parse(req.url, true).query;
     let string;
     let jsonObj = req.body;
+    //javascript ottaa suoraan varaushetken; menee sellaisenaan tietokantaan
+    let varauspvm = new Date();
+    let apvm = new Date(jsonObj.alkupvm);
+    let lpvm = new Date(jsonObj.loppupvm);
+    //laskee varattujen päivien määrän millisekuntien kautta
+    let paivat = (lpvm.getTime() - apvm.getTime()) / 1000 / 60 / 60 / 24;
+    let kokhinta = jsonObj.hinta * paivat;
 
     console.log('receiving data ...');
     console.log("body: %j", req.body);
+    console.log(apvm);
+    console.log(lpvm);
+    console.log(paivat);
+    console.log(kokhinta);
     res.send(req.body);
 
     let sql = "INSERT INTO asiakas (ETUNIMI, SUKUNIMI, KATUOSOITE, POSTINRO, KAUPUNKI, EMAIL, PUHNRO)"
@@ -162,13 +205,12 @@ app.post('/api/asiakkaat/add', function (req, res) {
     (async () => {
         try {
             const result = await query(sql,[jsonObj.etunimi, jsonObj.sukunimi, jsonObj.katuosoite, jsonObj.postinro, jsonObj.kaupunki, jsonObj.email, jsonObj.puhnro]);
-            //let insertedId = result.insertId;
-            //let sql2 = "INSERT INTO event_date (Date, Event_id) values (?, ?)";
-            //const result2 = await query(sql2, [jsonObj.EventDate, insertedId]);
-            string = JSON.stringify(result);
-            //alteredResult = '{"numOfRows":'+rows.length+',"rows":'+string+'}';
+            let insertedId = result.insertId;
+            let sql2 = "INSERT INTO varaus (MOKKIID, ASIAKASID, VARAUSPVM, ALKUPVM, LOPPUPVM, KOKHINTA)"
+            + " values (?, ?, ?, ?, ?, ?)";
+            const result2 = await query(sql2, [jsonObj.mokkiid, insertedId, varauspvm, jsonObj.alkupvm, jsonObj.loppupvm, kokhinta]);
+            string = JSON.stringify(result2);
             console.log(string);
-            //res.send(result);
 
         }
         catch (err) {
