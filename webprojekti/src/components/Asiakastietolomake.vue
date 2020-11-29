@@ -18,7 +18,7 @@
             <label>Puhelinnumero</label>
             <input v-model="asiakas.puhnro" type="text"/>
             <label>Sähköpostiosoite</label>
-            <input v-model="asiakas.email" type="text"/>
+            <input v-model="asiakas.email" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">/>
             <button>Tee varaus</button>
         </form>
         <button v-on:click="peruutaVaraus">Peruuta</button>
@@ -44,8 +44,22 @@
     methods: {
       teeVaraus(){
         console.log('Varaus Tehty');
+       // this.asiakas;
+
+
+
+        this.asiakas = {
+          etunimi: '',
+          sukunimi: '',
+          katuosoite: '',
+          postinro: '',
+          kaupunki: '',
+          puhnro: '',
+          email: '',
+        }
 
       },
+
       peruutaVaraus(){
         console.log('Varaus peruttu');
       }
