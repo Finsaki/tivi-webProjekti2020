@@ -3,7 +3,7 @@
     <!--<img alt="Vue logo" src="./assets/logo.png">-->
     <h1>Mökkivarausjärjestelmä</h1>
     <navipalkki></navipalkki>
-    <mokkilistaus :mokit="mokit"/>
+    <mokkilistaus :mokit="mokit" @valitse:mokki="valitseMokit"/>
     <asiakastietolomake></asiakastietolomake>
     <varausnakyma />
   </div>
@@ -23,27 +23,48 @@ export default {
     Navipalkki,
     Varausnakyma
   },
-  /* testidataa, poistetaan kun yhdistetty tietokantaan */
   data() {
     return {
-      mokit: [
-        {
-        ID: 1,
-        NIMI: "TestiMökki 1",
-        OSOITE: "Mökkitie 1 A 1",
-        HINTA: 80,
-        HLOMAARA: 3,
-        KUVAUS: "Pieni mökki kolmelle"
-        },
-        {
-        ID: 2,
-        NIMI: "TestiMökki 2",
-        OSOITE: "Mökkitie 1 A 2",
-        HINTA: 500,
-        HLOMAARA: 12,
-        KUVAUS: "Iso mökki tämä"
+      //taulukko johon tallennetaan tietokannasta haetut mokit
+      mokit: [],
+      //kayttajan mokkilistauksesta klikkaama mokki
+      valittuMokki: null
+    }
+  },
+  mounted() {
+    this.getMokit()
+  },
+  methods: {
+    //Funktio hakee kaikkien mokkien tiedot tietokannasta ja tallentaa ne mokit lista-muuttujaan. Listaa kayttaa Mokkilistaus.vue
+    async getMokit() {
+      try {
+        const response = await fetch('http://localhost:8081/api/mokit');
+        const data = await response.json();
+        for (let i = 0; i < data.numOfRows; i++) {
+          let rivi = data.rows[i];
+          this.mokit.push ({
+            "id": rivi.ID,
+            "nimi": rivi.NIMI,
+            "osoite": rivi.OSOITE,
+            "hinta": rivi.HINTA,
+            "hlomaara": rivi.HLOMAARA,
+            "kuvaus": rivi.KUVAUS
+          });
         }
-      ]
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    //Funktio tallentaa valitun mokin tiedot valittuMokki muuttujaan kun sita klikataan Mokkilistaus.vue:n kautta
+    async valitseMokit(mokkiID) {
+      for (let i = 0; i < this.mokit.length; i++) {
+        if (mokkiID === this.mokit[i].id) {
+          this.valittuMokki = this.mokit[i];
+          break;
+        }
+      }
+      //this.valittuMokki = this.mokit[mokkiID];
+      console.log("app.vuessa valittu mokki: " + this.valittuMokki.nimi);
     }
   }
 }
