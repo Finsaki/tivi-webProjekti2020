@@ -10,7 +10,7 @@
             <label>Sukunimi</label>
             <input v-model="asiakas.sukunimi" type="text" pattern="[a-zA-Z]+" />
             <label>Katuosoite</label>
-            <input v-model="asiakas.katuosoite" type="text" pattern="[a-zA-Z]+"/>
+            <input v-model="asiakas.katuosoite" type="text" pattern="[a-zA-Z 0-9-]+"/>
             <label>Postinumero</label>
             <input v-model="asiakas.postinro" type="text" pattern="[0-9]{5}" maxlength="5" minlength="5" />
             <label>Kaupunki</label>
