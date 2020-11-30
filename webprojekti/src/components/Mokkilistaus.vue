@@ -13,15 +13,20 @@
         </tr>
       </thead>
       <tbody>
-        <tr :key="mokki.ID" v-for="mokki in mokit">
-          <td>{{mokki.NIMI}}</td>
-          <td>{{mokki.OSOITE}}</td>
-          <td>{{mokki.HINTA}}</td>
-          <td>{{mokki.HLOMAARA}}</td>
-          <td>{{mokki.KUVAUS}}</td>
+        <tr :key="mokki.id" v-for="mokki in mokit" @click="valitseRivi(mokki.id)" :class="{'highlight': (mokki.id == valittuMokki)}">
+          <td>{{mokki.nimi}}</td>
+          <td>{{mokki.osoite}}</td>
+          <td>{{mokki.hinta}}</td>
+          <td>{{mokki.hlomaara}}</td>
+          <td>{{mokki.kuvaus}}</td>
         </tr>
       </tbody>
     </table>
+
+    <strong>Valittu mökki:</strong>
+    <div v-if="this.valittuMokki === null">Ei valintaa</div>
+    <div v-else>{{this.mokit[this.valittuMokki - 1].nimi}}</div>
+
   </div>
 </template>
 
@@ -31,14 +36,30 @@
     props: {
       mokit: Array
     },
+    data() {
+      return {
+        //kayttajan valitsema mokki
+        valittuMokki: null
+      }
+    },
     methods: {
-      valitseMokki() {
-        /* ei viela valmis */
+      //@click metodi kayttaa tata funktiota kun kayttaja klikkaa tiettya rivia. Funktio tallettaa klikatun mokin ID:n
+      //omaan sisaiseen muuttujaan, seka vie sen App.vue:n omaan muuttujaan.
+      //----> Omaa muuttujaa ei valttamatta tarvita jos valittu nakyma paivitetaan vasta asiakastietolomakkeeseen.
+      valitseRivi(mokki) {
+        this.valittuMokki = mokki;
+        console.log("Valitun mökin ID on " + this.valittuMokki);
+        this.$emit('valitse:mokki', this.valittuMokki)
       }
     }
   };
 </script>
 
 <style scoped>
-
+. highlight {
+  background-color: red;
+}
+tr:hover{
+  cursor: pointer;
+}
 </style>
