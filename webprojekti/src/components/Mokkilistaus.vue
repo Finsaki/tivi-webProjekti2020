@@ -26,7 +26,7 @@
     <strong>Valittu mökki:</strong>
     <div v-if="this.valittuMokki === null">Ei valintaa</div>
     <div v-else>{{this.mokit[this.valittuMokki - 1].nimi}}</div>
-
+    <button v-on:click="valitseMokki">Valitse mökki</button>
   </div>
 </template>
 
@@ -50,6 +50,11 @@
         this.valittuMokki = mokki;
         console.log("Valitun mökin ID on " + this.valittuMokki);
         this.$emit('valitse:mokki', this.valittuMokki)
+      },
+      //'Valitse mökki'-napin toiminta
+      valitseMokki() {
+        //Välitetään App.vueen tieto napin painamisesta
+        this.$emit('valitseMokkiNappi');
       }
     }
   };

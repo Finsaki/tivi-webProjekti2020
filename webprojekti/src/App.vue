@@ -1,12 +1,12 @@
 <template>
-  <div id="app">
-    <!--<img alt="Vue logo" src="./assets/logo.png">-->
-    <h1>Mökkivarausjärjestelmä</h1>
-    <navipalkki></navipalkki>
-    <mokkilistaus :mokit="mokit" @valitse:mokki="valitseMokit"/>
-    <asiakastietolomake></asiakastietolomake>
-    <varausnakyma />
-  </div>
+    <div id="app">
+        <!--<img alt="Vue logo" src="./assets/logo.png">-->
+        <h1>Mökkivarausjärjestelmä</h1>
+        <navipalkki @uusiVarausNappi="uusiVarausNappi" @omaVarausNappi="omaVarausNappi"></navipalkki>
+        <mokkilistaus :mokit="mokit" @valitse:mokki="valitseMokit" @valitseMokkiNappi="valitseMokkiNappi" v-if="naytaMokkinakyma===true"/>
+        <asiakastietolomake @peruutaNappi="peruutaNappi" v-if="naytaAsiakasNakyma===true"></asiakastietolomake>
+        <varausnakyma v-if="naytaVarausnakyma===true"/>
+    </div>
 </template>
 
 <script>
@@ -28,7 +28,11 @@ export default {
       //taulukko johon tallennetaan tietokannasta haetut mokit
       mokit: [],
       //kayttajan mokkilistauksesta klikkaama mokki
-      valittuMokki: null
+      valittuMokki: null,
+      //Elementtien näkyvyyksille alkuarvot
+      naytaMokkinakyma: true,
+      naytaAsiakasNakyma: false,
+      naytaVarausnakyma: false,
     }
   },
   mounted() {
@@ -65,6 +69,30 @@ export default {
       }
       //this.valittuMokki = this.mokit[mokkiID];
       console.log("app.vuessa valittu mokki: " + this.valittuMokki.nimi);
+    },
+    //Navipalkin 'uusi varaus'-napin toiminto
+    uusiVarausNappi() {
+      this.naytaMokkinakyma = true,
+              this.naytaAsiakasNakyma = false,
+              this.naytaVarausnakyma = false;
+    },
+    //Navipalkin 'oma varaus'-napin toiminto
+    omaVarausNappi() {
+      this.naytaVarausnakyma = true,
+              this.naytaAsiakasNakyma = false,
+              this.naytaMokkinakyma = false;
+    },
+    //Mökkilistauksen 'valitse mökki'-napin toiminto
+    valitseMokkiNappi() {
+      this.naytaMokkinakyma = false,
+              this.naytaVarausnakyma = false;
+      this.naytaAsiakasNakyma = true;
+    },
+    //Asiakasnäkymän peruuta-napin toiminto
+    peruutaNappi() {
+      this.naytaAsiakasNakyma = false;
+      this.naytaVarausnakyma = false;
+      this.naytaMokkinakyma = true;
     }
   }
 }
@@ -72,7 +100,6 @@ export default {
 
 <style>
 #app {
-    
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
