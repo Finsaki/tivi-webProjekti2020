@@ -2,7 +2,7 @@
     <div id="asiakastiedot">
         <h2>Asiakastiedot</h2>
         <p>Olet varaamassa mökkiä:</p>
-        <p>*TÄHÄN MÖKIN TIEDOT*</p>
+        <p class="lihavoitu">{{valittuMokki.nimi}}, {{valittuMokki.osoite}}, {{valittuMokki.hinta}} €/päivä</p>
         <p>Syötä tietosi alla oleviin kenttiin. Täytäthän kaikki kentät.</p>
         <form v-on:submit.prevent="teeVaraus">
             <label>Etunimi</label>
@@ -20,7 +20,6 @@
             <label>Sähköpostiosoite</label>
             <input v-model="asiakas.email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
             <p v-if="virhe">❗Täytä kaikki kentät</p>
-            <p v-if="hyvaksytty">✅Varaus luotu onnistuneesti</p>
             <button>Tee varaus</button>
         </form>
         <button v-on:click="peruutaVaraus">Peruuta</button>
@@ -33,60 +32,70 @@
     data() {
       return {
         asiakas: {
-          etunimi: '',
-          sukunimi: '',
-          katuosoite: '',
-          postinro: '',
-          kaupunki: '',
-          puhnro: '',
-          email: '',
+          etunimi: null,
+          sukunimi:  null,
+          katuosoite: null,
+          postinro: null,
+          kaupunki: null,
+          puhnro: null,
+          email: null,
           alkupvm: '2020-02-20',
           loppupvm: '2020-03-20',
-          hinta: '1',
-          mokkiid: '1',
+          hinta: this.valittuMokki.hinta,
+          mokkiid: this.valittuMokki.id,
         },
         //Alla virheilmoituksen näkyvyyteen muuttujat
         virhe: false,
-        hyvaksytty: false
       };
     },
-    computed: {
-
+    props: {
+      valittuMokki: Object
     },
     methods: {
       //käyttäjä painaa tee varaus -nappia
       async teeVaraus() {
+        this.virhe = false;
+        //console.log(this.asiakas);
 
-        //Tähän vielä testaus onko kaikki inputit täytetty
+        //Tarkastetaan että inputit eivät ole tyhjät
+        if (!this.asiakas.etunimi || !this.asiakas.sukunimi || !this.asiakas.katuosoite || !this.asiakas.postinro || !this.asiakas.kaupunki || !this.asiakas.puhnro || !this.asiakas.email) {
+          //console.log('virhe');
+          this.virhe = true;
+          return;
 
-        console.log(this.asiakas);
+        } else {
+          //Tehdään POST-pyyntö palvelimelle
+          try {
+            const requestOptions = {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify(this.asiakas)
+            };
+            const response = await fetch(' http://localhost:8081/api/asiakkaat/uusi', requestOptions);
+            const data = await response.json();
 
-        try {
-          const requestOptions = {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(this.asiakas)
-        };
-          const response = await fetch(' http://localhost:8081/api/asiakkaat/uusi', requestOptions);
-          const data = await response.json();
-          this.postId = data.id;
-          console.log(this.postId);
-          console.log('Varaus onnistui');
-        } catch (error) {
-          console.log('Varaus epäonnistui');
-          console.error(error);
+            //Välitetään App.vuelle juuri tehdyn varauksen varausnumero
+            this.$emit('lisaa:varausnro', data.insertId);
+
+            console.log('Varausnumero on ' + data.insertId);
+            console.log('Varaus onnistui');
+            this.$emit('varausOnnistunut');
+          } catch (error) {
+            console.log('Varaus epäonnistui');
+            console.error(error);
+          }
+
+          //Nollataan inputit ja asiakas-muuttuja
+          this.asiakas = {
+            etunimi: '',
+            sukunimi: '',
+            katuosoite: '',
+            postinro: '',
+            kaupunki: '',
+            puhnro: '',
+            email: '',
+          };
         }
-
-        //Nollataan inputit ja asiakas-muuttuja
-        this.asiakas = {
-          etunimi: '',
-          sukunimi: '',
-          katuosoite: '',
-          postinro: '',
-          kaupunki: '',
-          puhnro: '',
-          email: '',
-        };
 
       },
       //Käyttäjä painaa peruuta-nappia
@@ -99,5 +108,8 @@
 </script>
 
 <style scoped>
-
+.lihavoitu {
+    font-weight: bold;
+    color: firebrick;
+}
 </style>

@@ -54,7 +54,10 @@
       //'Valitse mökki'-napin toiminta
       valitseMokki() {
         //Välitetään App.vueen tieto napin painamisesta
-        this.$emit('valitseMokkiNappi');
+        if (this.valittuMokki !=null){
+          this.$emit('valitseMokkiNappi');
+        }
+
       }
     }
   };

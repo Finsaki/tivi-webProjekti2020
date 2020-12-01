@@ -197,7 +197,7 @@ app.post('/api/asiakkaat/uusi', function (req, res) {
     console.log(lpvm);
     console.log(paivat);
     console.log(kokhinta);
-    res.send(req.body);
+    //res.send(req.body);
 
     let sql = "INSERT INTO asiakas (ETUNIMI, SUKUNIMI, KATUOSOITE, POSTINRO, KAUPUNKI, EMAIL, PUHNRO)"
         + " values (?, ?, ?, ?, ?, ?, ?)";
@@ -209,8 +209,9 @@ app.post('/api/asiakkaat/uusi', function (req, res) {
             let sql2 = "INSERT INTO varaus (MOKKIID, ASIAKASID, VARAUSPVM, ALKUPVM, LOPPUPVM, KOKHINTA)"
             + " values (?, ?, ?, ?, ?, ?)";
             const result2 = await query(sql2, [jsonObj.mokkiid, insertedId, varauspvm, jsonObj.alkupvm, jsonObj.loppupvm, kokhinta]);
-            string = JSON.stringify(result2);
-            console.log(string);
+            /*string = JSON.stringify(result2);
+            console.log('joku stringi' + string);*/
+            res.send(JSON.stringify(result2));
 
         }
         catch (err) {
