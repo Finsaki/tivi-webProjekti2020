@@ -39,8 +39,8 @@
           kaupunki: null,
           puhnro: null,
           email: null,
-          alkupvm: '2020-02-20',
-          loppupvm: '2020-03-20',
+          alkupvm: this.valittuAloitusPvm,
+          loppupvm: this.valittuLopetusPvm,
           hinta: this.valittuMokki.hinta,
           mokkiid: this.valittuMokki.id,
         },
@@ -49,7 +49,9 @@
       };
     },
     props: {
-      valittuMokki: Object
+      valittuMokki: Object,
+      valittuAloitusPvm: String,
+      valittuLopetusPvm: String
     },
     methods: {
       //käyttäjä painaa tee varaus -nappia

@@ -13,7 +13,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr :key="mokki.id" v-for="mokki in mokit" @click="valitseRivi(mokki.id)" :class="{'highlight': (mokki.id == valittuMokki)}">
+        <tr v-for="mokki in mokit" @click="valitseRivi(mokki.id)" :key="mokki.id" :class="{'highlight': (mokki.id == mokki)}">
           <td>{{mokki.nimi}}</td>
           <td>{{mokki.osoite}}</td>
           <td>{{mokki.hinta}}</td>
@@ -22,11 +22,21 @@
         </tr>
       </tbody>
     </table>
-
     <strong>Valittu mökki:</strong>
-    <div v-if="this.valittuMokki === null">Ei valintaa</div>
-    <div v-else>{{this.mokit[this.valittuMokki - 1].nimi}}</div>
-    <button v-on:click="valitseMokki">Valitse mökki</button>
+    <div v-if="this.valittuMokki === null">Mökkiä ei valittu</div>
+    <div v-else>{{this.valittuMokki.nimi}}</div>
+
+    <h2>Varauksen kesto</h2>
+    <p>Anna varauksen alkupäivämäärä: </p>
+    <input type="date" v-model="aloitusPvm">
+    <p>Anna varauksen loppupäivämäärä: </p>
+    <input type="date" v-model="lopetusPvm">
+    <strong>Valittu ajanjakso:</strong>
+    <div v-if="!this.aloitusPvm || !this.lopetusPvm">Päivämääriä ei valittu</div>
+    <div v-else>{{this.aloitusPvm}} - {{this.lopetusPvm}}</div><br>
+
+    <button v-on:click="valitseMokkiAjalle">Varaa mökki valitulle ajanjaksolle</button>
+    <div v-if="this.kaikkiOk === false">Varmista että mökki ja varauksen aloituspäivämäärä sekä varauksen lopetuspäivämäärä ovat valittu</div>
   </div>
 </template>
 
@@ -39,32 +49,47 @@
     data() {
       return {
         //kayttajan valitsema mokki
-        valittuMokki: null
+        valittuMokki: null,
+        //aloituspaivamaara
+        aloitusPvm: null,
+        //lopetuspaivamaara
+        lopetusPvm: null,
+        //boolean tietojen syötön tarkastamiseen
+        kaikkiOk: true,
       }
     },
     methods: {
-      //@click metodi kayttaa tata funktiota kun kayttaja klikkaa tiettya rivia. Funktio tallettaa klikatun mokin ID:n
-      //omaan sisaiseen muuttujaan, seka vie sen App.vue:n omaan muuttujaan.
-      //----> Omaa muuttujaa ei valttamatta tarvita jos valittu nakyma paivitetaan vasta asiakastietolomakkeeseen.
-      valitseRivi(mokki) {
-        this.valittuMokki = mokki;
-        console.log("Valitun mökin ID on " + this.valittuMokki);
-        this.$emit('valitse:mokki', this.valittuMokki)
-      },
-      //'Valitse mökki'-napin toiminta
-      valitseMokki() {
-        //Välitetään App.vueen tieto napin painamisesta
-        if (this.valittuMokki !=null){
-          this.$emit('valitseMokkiNappi');
+      //@click metodi kayttaa tata funktiota kun kayttaja klikkaa tiettya rivia. Funktio tallettaa klikatun mokin omaan sisaiseen muuttujaan ID:n avulla
+      valitseRivi(mokkiID) {
+        for (let i = 0; i < this.mokit.length; i++) {
+          if (mokkiID === this.mokit[i].id) {
+            this.valittuMokki = this.mokit[i];
+            break;
+          }
         }
-
+      },
+      //'ValitseMokkiAjalle'-napin toiminta
+      valitseMokkiAjalle() {
+        if (this.valittuMokki !=null && this.aloitusPvm != null && this.lopetusPvm != null){
+          this.kaikkiOk = true;
+          //Välitetään App.vueen tieto valitusta mokista
+          this.$emit('valitse:mokki', this.valittuMokki);
+          //Välitetetään App.vueen tieto valitusta alkupäivämäärästä
+          this.$emit('valitse:aloitusPvm', this.aloitusPvm);
+          //Välitetetään App.vueen tieto valitusta lopetuspäivämäärästä
+          this.$emit('valitse:lopetusPvm', this.lopetusPvm);
+          //välitetään App.vueen tieto napin painamisesta
+          this.$emit('valitseMokkiAjalleNappi');
+        } else {
+          this.kaikkiOk = false;
+        }
       }
     }
   };
 </script>
 
 <style scoped>
-. highlight {
+.highlight {
   background-color: red;
 }
 tr:hover{

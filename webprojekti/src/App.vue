@@ -3,10 +3,11 @@
         <!--<img alt="Vue logo" src="./assets/logo.png">-->
         <h1>Mökkivarausjärjestelmä</h1>
         <navipalkki @uusiVarausNappi="uusiVarausNappi" @omaVarausNappi="omaVarausNappi"></navipalkki>
-        <mokkilistaus :mokit="mokit" @valitse:mokki="valitseMokit" @valitseMokkiNappi="valitseMokkiNappi"
-                      v-if="naytaMokkinakyma===true"/>
-        <asiakastietolomake v-bind:valittuMokki="valittuMokki" @varausOnnistunut="varausOnnistunut" @peruutaNappi="peruutaNappi" @lisaa:varausnro="lisaaVarausnro"
-                            v-if="naytaAsiakasNakyma===true"></asiakastietolomake>
+        <mokkilistaus :mokit="mokit" @valitse:mokki="valitseMokki" @valitse:aloitusPvm="valitseAloitusPvm" @valitse:lopetusPvm="valitseLopetusPvm"
+          @valitseMokkiAjalleNappi="valitseMokkiAjalleNappi" v-if="naytaMokkinakyma===true"/>
+        <asiakastietolomake v-bind:valittuMokki="valittuMokki" v-bind:valittuAloitusPvm="aloitusPvm" v-bind:valittuLopetusPvm="lopetusPvm"
+          @varausOnnistunut="varausOnnistunut" @peruutaNappi="peruutaNappi" @lisaa:varausnro="lisaaVarausnro"
+          v-if="naytaAsiakasNakyma===true"></asiakastietolomake>
         <varausnakyma v-if="naytaVarausnakyma===true"/>
         <varaus-onnistui v-if="naytaVarausOnnistui===true" v-bind:varausnro="varausnro"></varaus-onnistui>
     </div>
@@ -32,8 +33,12 @@
       return {
         //taulukko johon tallennetaan tietokannasta haetut mokit
         mokit: [],
-        //kayttajan mokkilistauksesta klikkaama mokki
+        //kayttajan valitsema mokki
         valittuMokki: null,
+        //kayttajan valitsema aloituspäivämäärä
+        aloitusPvm: null,
+        //käyttäjän valitsema lopetuspäivämäärä
+        lopetusPvm: null,
         //Elementtien näkyvyyksille alkuarvot
         naytaMokkinakyma: true,
         naytaAsiakasNakyma: false,
@@ -67,16 +72,17 @@
           console.error(error);
         }
       },
-      //Funktio tallentaa valitun mokin tiedot valittuMokki muuttujaan kun sita klikataan Mokkilistaus.vue:n kautta
-      async valitseMokit(mokkiID) {
-        for (let i = 0; i < this.mokit.length; i++) {
-          if (mokkiID === this.mokit[i].id) {
-            this.valittuMokki = this.mokit[i];
-            break;
-          }
-        }
-        //this.valittuMokki = this.mokit[mokkiID];
-        console.log('app.vuessa valittu mokki: ' + this.valittuMokki.nimi);
+      //Funktio tallettaa Mokkilistaus.vue:sta tulevan mökin tiedot valittuMokki muuttujaan
+      valitseMokki(mokki) {
+        this.valittuMokki = mokki;
+      },
+      //Funktio tallettaa Mokkilistaus.vue:sta tulevan aloituspäivämäärän aloitusPvm muuttujaan
+      valitseAloitusPvm(aloitusPvm) {
+        this.aloitusPvm = aloitusPvm;
+      },
+      //Funktio tallettaa Mokkilistaus.vue:sta tulevan lopetuspäivämäärän lopetusPvm muuttujaan
+      valitseLopetusPvm(lopetusPvm) {
+        this.lopetusPvm = lopetusPvm;
       },
       //Navipalkin 'uusi varaus'-napin toiminto
       uusiVarausNappi() {
@@ -93,7 +99,7 @@
         this.naytaVarausOnnistui = false;
       },
       //Mökkilistauksen 'valitse mökki'-napin toiminto
-      valitseMokkiNappi() {
+      valitseMokkiAjalleNappi() {
         this.naytaMokkinakyma = false;
         this.naytaVarausnakyma = false;
         this.naytaAsiakasNakyma = true;
