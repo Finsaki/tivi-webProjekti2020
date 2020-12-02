@@ -111,7 +111,7 @@
   };
 </script>
 
-<style>
+<style scoped>
     /* Poistettu turhat bullet pointit */
     ul {
         list-style: none;

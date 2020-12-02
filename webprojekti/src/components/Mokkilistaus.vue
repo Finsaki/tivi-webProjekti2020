@@ -5,15 +5,17 @@
     <table>
       <thead>
         <tr>
+          <th>Kuva</th>
           <th>Nimi</th>
           <th>Osoite</th>
-          <th>Hinta</th>
+          <th>Hinta/Päivä</th>
           <th>Henkilömäärä</th>
           <th>Kuvaus</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="mokki in mokit" @click="valitseRivi(mokki.id)" :key="mokki.id" :class="{'highlight': (mokki.id == mokki)}">
+          <td><img :src="mokki.kuva" alt="Kuva mökistä" height="100" ></td>
           <td>{{mokki.nimi}}</td>
           <td>{{mokki.osoite}}</td>
           <td>{{mokki.hinta}}</td>
@@ -24,7 +26,8 @@
     </table>
     <strong>Valittu mökki:</strong>
     <div v-if="this.valittuMokki === null">Mökkiä ei valittu</div>
-    <div v-else>{{this.valittuMokki.nimi}}</div>
+    <div v-else>{{this.valittuMokki.nimi}}<br>
+      <img :src="valittuMokki.kuva" alt="Kuva mökistä" height="500" ></div>
 
     <h2>Varauksen kesto</h2>
     <p>Anna varauksen alkupäivämäärä: </p>
@@ -94,5 +97,10 @@
 }
 tr:hover{
   cursor: pointer;
+}
+input {
+  margin: auto;
+  margin-bottom: 1em;
+  max-width: 20em;
 }
 </style>

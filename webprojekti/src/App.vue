@@ -59,8 +59,10 @@
           const data = await response.json();
           for (let i = 0; i < data.numOfRows; i++) {
             let rivi = data.rows[i];
+            let kuva = "./mokki"+(i+1)+".jpg";
             this.mokit.push({
               'id': rivi.ID,
+                'kuva': kuva,
               'nimi': rivi.NIMI,
               'osoite': rivi.OSOITE,
               'hinta': rivi.HINTA,

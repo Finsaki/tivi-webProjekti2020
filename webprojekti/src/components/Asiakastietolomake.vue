@@ -142,4 +142,9 @@
     .lihavoitu {
         font-weight: bold;
     }
+    input {
+        margin: auto;
+        margin-bottom: 1em;
+        max-width: 20em;
+    }
 </style>
