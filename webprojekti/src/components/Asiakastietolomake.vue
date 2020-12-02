@@ -114,4 +114,9 @@
     font-weight: bold;
     color: firebrick;
 }
+input{
+    margin: auto;
+    margin-bottom: 1em;
+    max-width: 20em;
+}
 </style>

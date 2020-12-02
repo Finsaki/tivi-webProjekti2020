@@ -95,4 +95,9 @@
 tr:hover{
   cursor: pointer;
 }
+input{
+  margin: auto;
+  margin-bottom: 1em;
+  max-width: 20em;
+}
 </style>
