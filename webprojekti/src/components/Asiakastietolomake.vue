@@ -120,11 +120,8 @@
       },
       //Muutetaan päivämäärien muoto YYYY-MM-dd -> dd.MM.YYYY
       muunnaPaivamaarat() {
-        let alkupvm = this.valittuAloitusPvm;
-        let loppupvm = this.valittuLopetusPvm;
-
-        let splitattuAlkupvm = alkupvm.split('-');
-        let splitattuLoppupvm = loppupvm.split('-');
+        let splitattuAlkupvm = this.valittuAloitusPvm.split('-');
+        let splitattuLoppupvm = this.valittuLopetusPvm.split('-');
 
         let muunnettuAlkupvm = splitattuAlkupvm[2] + '.' + splitattuAlkupvm[1] + '.' + splitattuAlkupvm[0];
         let muunnettuLoppupvm = splitattuLoppupvm[2] + '.' + splitattuLoppupvm[1] + '.' + splitattuLoppupvm[0];
