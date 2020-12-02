@@ -180,8 +180,7 @@ app.get('/api/varaukset/pvm', function (req, res) {
 
 
 app.post('/api/asiakkaat/uusi', function (req, res) {
-    console.log("Got a POST request for the homepage");
-    let string;
+    console.log("POST-pyyntö");
     let jsonObj = req.body;
     //javascript ottaa suoraan varaushetken; menee sellaisenaan tietokantaan
     let varauspvm = new Date();
@@ -191,13 +190,11 @@ app.post('/api/asiakkaat/uusi', function (req, res) {
     let paivat = (lpvm.getTime() - apvm.getTime()) / 1000 / 60 / 60 / 24;
     let kokhinta = jsonObj.hinta * paivat;
 
-    console.log('receiving data ...');
     console.log("body: %j", req.body);
     console.log(apvm);
     console.log(lpvm);
     console.log(paivat);
     console.log(kokhinta);
-    //res.send(req.body);
 
     let sql = "INSERT INTO asiakas (ETUNIMI, SUKUNIMI, KATUOSOITE, POSTINRO, KAUPUNKI, EMAIL, PUHNRO)"
         + " values (?, ?, ?, ?, ?, ?, ?)";
@@ -205,14 +202,12 @@ app.post('/api/asiakkaat/uusi', function (req, res) {
     (async () => {
         try {
             const result = await query(sql,[jsonObj.etunimi, jsonObj.sukunimi, jsonObj.katuosoite, jsonObj.postinro, jsonObj.kaupunki, jsonObj.email, jsonObj.puhnro]);
-            let insertedId = result.insertId;
+            let insertedId = result.insertId; //Luodun asiakkaan id
             let sql2 = "INSERT INTO varaus (MOKKIID, ASIAKASID, VARAUSPVM, ALKUPVM, LOPPUPVM, KOKHINTA)"
             + " values (?, ?, ?, ?, ?, ?)";
             const result2 = await query(sql2, [jsonObj.mokkiid, insertedId, varauspvm, jsonObj.alkupvm, jsonObj.loppupvm, kokhinta]);
-            /*string = JSON.stringify(result2);
-            console.log('joku stringi' + string);*/
+            //Lähetetään käyttäjälle vastauksena viimeisimmän kyselyn tulos, josta saa varausIdn
             res.send(JSON.stringify(result2));
-
         }
         catch (err) {
             console.log("Database error!"+ err);
