@@ -32,9 +32,9 @@
 
         <h2>Varauksen kesto</h2>
         <p>Anna varauksen alkupäivämäärä: </p>
-        <input type="date" v-model="aloitusPvm" v-on:change="muunnaPaivamaarat">
+        <input type="date" v-model="aloitusPvm" v-on:change="muunnaPaivamaarat" v-bind:min="this.kalenterin1EkaPaiva">
         <p>Anna varauksen loppupäivämäärä: </p>
-        <input type="date" v-model="lopetusPvm" v-on:change="muunnaPaivamaarat">
+        <input type="date" v-model="lopetusPvm" v-on:change="muunnaPaivamaarat" v-bind:min="this.kalenterin2EkaPaiva">
         <strong>Valittu ajanjakso:</strong>
         <div v-if="!this.aloitusPvm || !this.lopetusPvm">Päivämääriä ei valittu</div>
         <div v-else>{{this.korjattuAloituspvm}} - {{this.korjattuLopetuspvm}}</div>
@@ -69,9 +69,15 @@
         kaikkiOk: true,
         virheellinenAikavaliIlmoitus: Boolean,
         mokkiVarattuIlmoitus: Boolean,
-        // Muuttujaan sijoitetaan tietokannasta haettu tieto mökin varauksen tilasta
+        // Valittu mökki varattu/vapaa
         mokkiVapaa: Boolean,
+        //Kalentereissa ensimmäiset valittavat päivät
+        kalenterin1EkaPaiva: Date,
+        kalenterin2EkaPaiva: Date,
       };
+    },
+    mounted() {
+      this.alustaKalenterinPaivat();
     },
     methods: {
       //@click metodi kayttaa tata funktiota kun kayttaja klikkaa tiettya rivia. Funktio tallettaa klikatun mokin omaan sisaiseen muuttujaan ID:n avulla
@@ -95,12 +101,10 @@
             console.log('aikaväli ok');
             //Tarkastetaan onko haluttu mökki vapaa kys. ajanjaksolle
             this.tarkastaVaraustilanne();
-            //Aikaväli virheellinen
-          } else {
+          } else { //Aikaväli virheellinen
             this.virheellinenAikavaliIlmoitus = true;
           }
-          //Päivämäärä-/mökkivalinta puuttuu
-        } else {
+        } else { //Päivämäärä-/mökkivalinta puuttuu
           this.kaikkiOk = false;
         }
       },
@@ -145,6 +149,16 @@
           console.log('Mökki varmistettu varatuksi');
         }
       },
+      //Alustaa molempien kalentereiden päivämäärät nykyhetki ja nykyhetki + 1pv
+      alustaKalenterinPaivat() {
+        //Luodaan päivämuuttuja
+        let paiva = new Date();
+        //Asetetaan nykyhetki eka kalenterin muuttujaan muodossa yyyy-mm-dd
+        this.kalenterin1EkaPaiva = paiva.toISOString().split('T')[0];
+        //Siirretään päivää yhdellä eteenpäin ja lisätään toka kalenterin muuttujaksi
+        paiva.setDate(paiva.getDate() + 1);
+        this.kalenterin2EkaPaiva = paiva.toISOString().split('T')[0];
+      },
       muunnaPaivamaarat() {
         let dateFormat = require('dateformat');
         this.korjattuAloituspvm = dateFormat(this.aloitusPvm, 'dd.mm.yyyy');
@@ -158,9 +172,11 @@
     .highlight {
         background-color: red;
     }
+
     tr:hover {
         cursor: pointer;
     }
+
     input {
         margin: auto;
         margin-bottom: 1em;
