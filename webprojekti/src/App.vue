@@ -10,6 +10,7 @@
           v-if="naytaAsiakasNakyma===true"></asiakastietolomake>
         <varausnakyma v-if="naytaVarausnakyma===true"/>
         <varaus-onnistui v-if="naytaVarausOnnistui===true" v-bind:varausnro="varausnro"></varaus-onnistui>
+        <pohjapalkki></pohjapalkki>
     </div>
 </template>
 
@@ -19,10 +20,12 @@
   import Mokkilistaus from './components/Mokkilistaus';
   import Asiakastietolomake from './components/Asiakastietolomake';
   import VarausOnnistui from '@/components/VarausOnnistui';
+  import Pohjapalkki from "./components/Pohjapalkki";
 
   export default {
     name: 'App',
     components: {
+        Pohjapalkki,
       VarausOnnistui,
       Asiakastietolomake,
       Mokkilistaus,
@@ -135,5 +138,6 @@
         text-align: center;
         color: #2c3e50;
         margin-top: 60px;
+        padding-bottom: 10em;
     }
 </style>

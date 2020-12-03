@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a6bb005-8449-4670-aa12-e73acd569608" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/webprojekti/src/components/Pohjapalkki.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webprojekti/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webprojekti/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webprojekti/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/webprojekti/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webprojekti/src/components/mokki1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/webprojekti/src/assets/mokki1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webprojekti/src/components/mokki2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/webprojekti/src/assets/mokki2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webprojekti/src/components/mokki3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/webprojekti/src/assets/mokki3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webprojekti/src/components/mokki4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/webprojekti/src/assets/mokki4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webprojekti/src/components/mokki5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/webprojekti/src/assets/mokki5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webprojekti/src/components/Mokkilistaus.vue" beforeDir="false" afterPath="$PROJECT_DIR$/webprojekti/src/components/Mokkilistaus.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +16,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -92,7 +89,7 @@
       <workItem from="1606836570942" duration="13262000" />
       <workItem from="1606892787658" duration="4131000" />
       <workItem from="1606900148955" duration="9263000" />
-      <workItem from="1606978895764" duration="4194000" />
+      <workItem from="1606978895764" duration="17812000" />
     </task>
     <task id="LOCAL−00001" summary="hymynaama lisätty">
       <created>1605876683632</created>
@@ -154,7 +151,13 @@
       <option name="presentableId" value="LOCAL−00010" />
       <updated>1606912602901</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL−00011" summary="kuvan näyttö korjattu">
+      <created>1606983637502</created>
+      <option name="number" value="LOCAL−00011" />
+      <option name="presentableId" value="LOCAL−00011" />
+      <updated>1606983637502</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,13 +174,14 @@
     <MESSAGE value="Varaustietojen haku varausnäkymään." />
     <MESSAGE value="Pieni parannus" />
     <MESSAGE value="Kuvat lisätty mökkilistaukseen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kuvat lisätty mökkilistaukseen" />
+    <MESSAGE value="kuvan näyttö korjattu" />
+    <option name="LAST_COMMIT_MESSAGE" value="kuvan näyttö korjattu" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="221" y="0" key="CommitChangelistDialog2" timestamp="1606912602292">
+    <state x="221" y="0" key="CommitChangelistDialog2" timestamp="1606983636348">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="221" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1606912602292" />
+    <state x="221" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1606983636348" />
     <state x="1771" y="35" key="CommitChangelistDialog2/0.0.1440.860/1440.0.1920.1040@1440.0.1920.1040" timestamp="1606207623574" />
     <state x="248" y="29" key="CommitChangelistDialog2/0.0.1440.860@0.0.1440.860" timestamp="1605877174496" />
     <state x="665" y="208" key="FileChooserDialogImpl" timestamp="1606157112083">
@@ -189,30 +193,30 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="263" y="0" key="FileDocumentManager.FileCacheConflict/0.0.1280.680@0.0.1280.680" timestamp="1606219245236" />
-    <state width="1259" height="163" key="GridCell.Tab.0.bottom" timestamp="1606981007317">
+    <state width="1259" height="163" key="GridCell.Tab.0.bottom" timestamp="1606989717205">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1606981007317" />
-    <state width="1259" height="163" key="GridCell.Tab.0.center" timestamp="1606981007317">
+    <state width="1259" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1606989717205" />
+    <state width="1259" height="163" key="GridCell.Tab.0.center" timestamp="1606989717205">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1606981007317" />
-    <state width="1259" height="163" key="GridCell.Tab.0.left" timestamp="1606981007317">
+    <state width="1259" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1606989717205" />
+    <state width="1259" height="163" key="GridCell.Tab.0.left" timestamp="1606989717205">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1606981007317" />
-    <state width="1259" height="163" key="GridCell.Tab.0.right" timestamp="1606981007317">
+    <state width="1259" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1606989717205" />
+    <state width="1259" height="163" key="GridCell.Tab.0.right" timestamp="1606989717205">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1606981007317" />
+    <state width="1259" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1606989717205" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1606376033001">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1606376033001" />
-    <state x="277" y="120" key="Vcs.Push.Dialog.v2" timestamp="1606912636562">
+    <state x="277" y="120" key="Vcs.Push.Dialog.v2" timestamp="1606983781619">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="277" y="120" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1606912636562" />
+    <state x="277" y="120" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1606983781619" />
     <state x="1856" y="183" key="Vcs.Push.Dialog.v2/0.0.1440.860/1440.0.1920.1040@1440.0.1920.1040" timestamp="1606207627531" />
     <state x="312" y="151" key="Vcs.Push.Dialog.v2/0.0.1440.860@0.0.1440.860" timestamp="1605877065300" />
     <state x="470" y="274" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606905703718">
@@ -224,5 +228,9 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="354" y="132" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1606375364729" />
+    <state x="297" y="151" key="run.anything.popup" timestamp="1606990512541">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1606990512541" />
   </component>
 </project>

@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="mokki in mokit" @click="valitseRivi(mokki.id)" :key="mokki.id" :class="{'highlight': (mokki.id == mokki)}">
+        <tr v-for="mokki in mokit" @click="valitseRivi(mokki.id)" :key="mokki.id" :class="{'highlight': (mokki === valittuMokki)}">
           <td><img :src="mokki.kuva" alt="Kuva mökistä" height="100" ></td>
           <td>{{mokki.nimi}}</td>
           <td>{{mokki.osoite}}</td>
