@@ -3,11 +3,14 @@
         <!--<img alt="Vue logo" src="./assets/logo.png">-->
         <h1>Mökkivarausjärjestelmä</h1>
         <navipalkki @uusiVarausNappi="uusiVarausNappi" @omaVarausNappi="omaVarausNappi"></navipalkki>
-        <mokkilistaus :mokit="mokit" @valitse:mokki="valitseMokki" @valitse:aloitusPvm="valitseAloitusPvm" @valitse:lopetusPvm="valitseLopetusPvm"
-          @valitseMokkiAjalleNappi="valitseMokkiAjalleNappi" v-if="naytaMokkinakyma===true"/>
-        <asiakastietolomake v-bind:valittuMokki="valittuMokki" v-bind:valittuAloitusPvm="aloitusPvm" v-bind:valittuLopetusPvm="lopetusPvm"
-          @varausOnnistunut="varausOnnistunut" @peruutaNappi="peruutaNappi" @lisaa:varausnro="lisaaVarausnro"
-          v-if="naytaAsiakasNakyma===true"></asiakastietolomake>
+        <mokkilistaus :mokit="mokit" @valitse:mokki="valitseMokki" @valitse:aloitusPvm="valitseAloitusPvm"
+                      @valitse:lopetusPvm="valitseLopetusPvm"
+                      @valitseMokkiAjalleNappi="valitseMokkiAjalleNappi" v-if="naytaMokkinakyma===true"/>
+        <asiakastietolomake v-bind:valittuMokki="valittuMokki" v-bind:valittuAloitusPvm="aloitusPvm"
+                            v-bind:valittuLopetusPvm="lopetusPvm"
+                            @varausOnnistunut="varausOnnistunut" @peruutaNappi="peruutaNappi"
+                            @lisaa:varausnro="lisaaVarausnro"
+                            v-if="naytaAsiakasNakyma===true"></asiakastietolomake>
         <varausnakyma v-if="naytaVarausnakyma===true"/>
         <varaus-onnistui v-if="naytaVarausOnnistui===true" v-bind:varausnro="varausnro"></varaus-onnistui>
         <pohjapalkki></pohjapalkki>
@@ -20,12 +23,12 @@
   import Mokkilistaus from './components/Mokkilistaus';
   import Asiakastietolomake from './components/Asiakastietolomake';
   import VarausOnnistui from '@/components/VarausOnnistui';
-  import Pohjapalkki from "./components/Pohjapalkki";
+  import Pohjapalkki from './components/Pohjapalkki';
 
   export default {
     name: 'App',
     components: {
-        Pohjapalkki,
+      Pohjapalkki,
       VarausOnnistui,
       Asiakastietolomake,
       Mokkilistaus,
@@ -62,10 +65,10 @@
           const data = await response.json();
           for (let i = 0; i < data.numOfRows; i++) {
             let rivi = data.rows[i];
-            let kuva = require("./assets/mokki"+(i+1)+".jpg");
+            let kuva = require('@/assets/mokki' + (i + 1) + '.jpg');
             this.mokit.push({
               'id': rivi.ID,
-                'kuva': kuva,
+              'kuva': kuva,
               'nimi': rivi.NIMI,
               'osoite': rivi.OSOITE,
               'hinta': rivi.HINTA,
@@ -125,7 +128,7 @@
       },
       lisaaVarausnro(varausnro) {
         this.varausnro = varausnro;
-      }
+      },
     },
   };
 </script>
