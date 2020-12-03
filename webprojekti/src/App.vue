@@ -1,7 +1,6 @@
 <template>
     <div id="app">
         <!--<img alt="Vue logo" src="./assets/logo.png">-->
-        <h1>Mökkivarausjärjestelmä</h1>
         <navipalkki @uusiVarausNappi="uusiVarausNappi" @omaVarausNappi="omaVarausNappi"></navipalkki>
         <mokkilistaus :mokit="mokit"
                       @valitse:mokki="valitseMokki"
@@ -58,6 +57,8 @@
         naytaVarausOnnistui: false,
         //Asiakkaan tekemän varauksen numero
         varausnro: null,
+        //Yrityksen logo
+        logo: null,
       };
     },
     mounted() {
@@ -146,7 +147,6 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-        margin-top: 60px;
         padding-bottom: 10em;
     }
 </style>

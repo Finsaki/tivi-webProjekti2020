@@ -1,7 +1,7 @@
 <template>
     <div id="mokkitiedot">
         <h2>Mökkitiedot</h2>
-        <p>Valitse mökki listalta</p>
+        <p :class="{'selite': true}">Valitse mökki listalta</p>
         <table>
             <thead>
             <tr>
@@ -26,24 +26,23 @@
             </tbody>
         </table>
         <strong>Valittu mökki:</strong>
-        <div v-if="this.valittuMokki === null">Mökkiä ei valittu</div>
-        <div v-else>{{this.valittuMokki.nimi}}<br>
+        <div :class="{'tulos ': true}" v-if="this.valittuMokki === null">Mökkiä ei valittu</div>
+        <div :class="{'tulos ': true}" v-else>{{this.valittuMokki.nimi}}<br><br>
             <img :src="valittuMokki.kuva" alt="Kuva mökistä" height="500"></div>
 
         <h2>Varauksen kesto</h2>
-        <p>Anna varauksen alkupäivämäärä: </p>
+        <p :class="{'selite': true}">Anna varauksen alkupäivämäärä </p>
         <input type="date" v-model="aloitusPvm" v-on:change="muunnaPaivamaarat" v-bind:min="this.kalenterin1EkaPaiva">
-        <p>Anna varauksen loppupäivämäärä: </p>
+        <p :class="{'selite': true}">Anna varauksen loppupäivämäärä </p>
         <input type="date" v-model="lopetusPvm" v-on:change="muunnaPaivamaarat" v-bind:min="this.kalenterin2EkaPaiva">
         <strong>Valittu ajanjakso:</strong>
-        <div v-if="!this.aloitusPvm || !this.lopetusPvm">Päivämääriä ei valittu</div>
-        <div v-else>{{this.korjattuAloituspvm}} - {{this.korjattuLopetuspvm}}</div>
-        <div v-if="this.kaikkiOk === false">Varmista että mökki ja varauksen aloituspäivämäärä sekä varauksen
-            lopetuspäivämäärä ovat valittu
-        </div>
-        <p v-if="this.virheellinenAikavaliIlmoitus === true">Varauksen loppumispäivä ei voi olla sama tai ennen
-            alkamispäivää!</p>
-        <p v-if="this.mokkiVarattuIlmoitus === true">Mökki on jo varattu kyseiselle aikavälille!</p>
+        <div :class="{'tulos': true}" v-if="!this.aloitusPvm || !this.lopetusPvm">Päivämääriä ei valittu</div>
+        <div :class="{'tulos': true}" v-else>{{this.korjattuAloituspvm}} - {{this.korjattuLopetuspvm}}</div>
+        <div :class="{'virhe': true}" v-if="this.kaikkiOk === false">Varmista että mökki ja varauksen aloituspäivämäärä sekä varauksen
+            lopetuspäivämäärä ovat valittu</div>
+        <div :class="{'virhe': true}" v-if="this.virheellinenAikavaliIlmoitus === true">Varauksen loppumispäivä ei voi olla samana päivänä tai ennen
+            alkamispäivää!</div>
+        <div :class="{'virhe': true}" v-if="this.mokkiVarattuIlmoitus === true">Mökki on jo varattu kyseiselle aikavälille!</div>
         <button v-on:click="valitseMokkiAjalle">Varaa mökki valitulle ajanjaksolle</button>
 
     </div>
@@ -170,7 +169,27 @@
 
 <style scoped>
     .highlight {
-        background-color: red;
+      background-color: rgba(3, 102, 238, 0.11);
+    }
+    .virhe{
+      color: red;
+      border-bottom: red dashed;
+      border-top:red dashed;
+      margin-top: 1em;
+    }
+    .tulos{
+      color: blue;
+    }
+    .selite{
+      font-size: 1em;
+      margin-bottom: 0.5em;
+      color: gray;
+    }
+    tr {
+      margin: auto;
+    }
+    td {
+      min-width: 2em;
     }
 
     tr:hover {
@@ -181,5 +200,22 @@
         margin: auto;
         margin-bottom: 1em;
         max-width: 20em;
+    }
+    table {
+      margin-left: 5%;
+      margin-right: 5%;
+      max-width: 90%;
+      border-top: solid black 2px;
+      border-bottom: solid black 2px;
+    }
+    thead {
+      border-left: solid black 2px;
+      border-right: solid black 2px;
+      background-color: darkgray;
+    }
+    button {
+      height: 4em;
+      width: 25em;
+      margin-top: 2em;
     }
 </style>

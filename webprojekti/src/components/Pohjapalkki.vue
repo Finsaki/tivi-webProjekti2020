@@ -1,7 +1,8 @@
 <template>
-    <div>
-        <p>Vuonosen Mökit! Mökinvuokrausta jo vuodesta 1932!<br><b>Yhteys:</b> info@vuonosenmokit.fi</p>
-    </div>
+  <div>
+      <img :src="require(`@/assets/logoVM.png`)" alt="firman logo" width="75" height="75">
+      <p>Vuonosen Mökit! Mökinvuokrausta jo vuodesta 1932!<br><b>Yhteys:</b> info@vuonosenmokit.fi</p>
+  </div>
 </template>
 
 <script>
@@ -20,6 +21,12 @@
         border-top: solid #0366ee 2px;
         padding: 10px;
         background-color: rgba(3, 102, 238, 0.11);
+        min-width: 40em;
+    }
+    img {
+      position: absolute;
+      bottom: 0.1em;
+      right: 2em;
     }
 
 </style>
