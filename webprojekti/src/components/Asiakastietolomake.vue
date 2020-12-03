@@ -8,7 +8,7 @@
         <p>Syötä tietosi alla oleviin kenttiin. Täytäthän kaikki kentät.</p>
         <form v-on:submit.prevent="teeVaraus">
             <label>Etunimi</label>
-            <input v-model="asiakas.etunimi" type="text" pattern="[a-zA-Z]+"/>
+            <input v-model="asiakas.etunimi" type="text" pattern="[a-zA-Z]+" ref="kohdista"/>
             <label>Sukunimi</label>
             <input v-model="asiakas.sukunimi" type="text" pattern="[a-zA-Z]+"/>
             <label>Katuosoite</label>
@@ -55,8 +55,9 @@
       };
     },
     mounted() {
-      //Heti kun sivu latautuu muunnetaan päivämäärät oikeaan muotoon
+      //Heti kun sivu latautuu muunnetaan päivämäärät oikeaan muotoon ja kohdistetaan näkymä ekaan inputtiin
       this.muunnaPaivamaarat();
+      this.$refs.kohdista.focus();
     },
     props: {
       valittuMokki: Object,
@@ -89,11 +90,9 @@
 
             //Välitetään App.vuelle juuri tehdyn varauksen varausnumero
             this.$emit('lisaa:varausnro', data.insertId);
-
+            this.$emit('varausOnnistunut');
             console.log('Varaus onnistui');
             console.log('Varausnumero on ' + data.insertId);
-
-            this.$emit('varausOnnistunut');
 
           } catch (error) {
             console.log('Varaus epäonnistui');
@@ -111,7 +110,6 @@
             email: '',
           };
         }
-
       },
       //Käyttäjä painaa peruuta-nappia
       peruutaVaraus() {
@@ -120,14 +118,9 @@
       },
       //Muutetaan päivämäärien muoto YYYY-MM-dd -> dd.MM.YYYY
       muunnaPaivamaarat() {
-        let splitattuAlkupvm = this.valittuAloitusPvm.split('-');
-        let splitattuLoppupvm = this.valittuLopetusPvm.split('-');
-
-        let muunnettuAlkupvm = splitattuAlkupvm[2] + '.' + splitattuAlkupvm[1] + '.' + splitattuAlkupvm[0];
-        let muunnettuLoppupvm = splitattuLoppupvm[2] + '.' + splitattuLoppupvm[1] + '.' + splitattuLoppupvm[0];
-
-        this.korjattuAloituspvm = muunnettuAlkupvm;
-        this.korjattuLopetuspvm = muunnettuLoppupvm;
+        let dateFormat = require('dateformat');
+        this.korjattuAloituspvm = dateFormat(this.valittuAloitusPvm, 'dd.mm.yyyy');
+        this.korjattuLopetuspvm = dateFormat(this.valittuLopetusPvm, 'dd.mm.yyyy');
       },
     },
   };
@@ -138,7 +131,6 @@
         font-weight: bold;
         color: firebrick;
     }
-
     .lihavoitu {
         font-weight: bold;
     }
