@@ -3,14 +3,20 @@
         <!--<img alt="Vue logo" src="./assets/logo.png">-->
         <h1>Mökkivarausjärjestelmä</h1>
         <navipalkki @uusiVarausNappi="uusiVarausNappi" @omaVarausNappi="omaVarausNappi"></navipalkki>
-        <mokkilistaus :mokit="mokit" @valitse:mokki="valitseMokki" @valitse:aloitusPvm="valitseAloitusPvm"
+        <mokkilistaus :mokit="mokit"
+                      @valitse:mokki="valitseMokki"
+                      @valitse:aloitusPvm="valitseAloitusPvm"
                       @valitse:lopetusPvm="valitseLopetusPvm"
-                      @valitseMokkiAjalleNappi="valitseMokkiAjalleNappi" v-if="naytaMokkinakyma===true"/>
-        <asiakastietolomake v-bind:valittuMokki="valittuMokki" v-bind:valittuAloitusPvm="aloitusPvm"
+                      @valitseMokkiAjalleNappi="valitseMokkiAjalleNappi"
+                      v-if="naytaMokkinakyma===true"/>
+        <asiakastietolomake v-bind:valittuMokki="valittuMokki"
+                            v-bind:valittuAloitusPvm="aloitusPvm"
                             v-bind:valittuLopetusPvm="lopetusPvm"
-                            @varausOnnistunut="varausOnnistunut" @peruutaNappi="peruutaNappi"
+                            @varausOnnistunut="varausOnnistunut"
+                            @peruutaNappi="peruutaNappi"
                             @lisaa:varausnro="lisaaVarausnro"
-                            v-if="naytaAsiakasNakyma===true"></asiakastietolomake>
+                            v-if="naytaAsiakasNakyma===true">
+        </asiakastietolomake>
         <varausnakyma v-if="naytaVarausnakyma===true"/>
         <varaus-onnistui v-if="naytaVarausOnnistui===true" v-bind:varausnro="varausnro"></varaus-onnistui>
         <pohjapalkki></pohjapalkki>
