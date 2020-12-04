@@ -60,8 +60,20 @@
       this.$refs.kohdista.focus();
     },
     props: {
+      /**
+       * Muuttuja johon haetaan näkymään siirryttäessä käyttäjän valitsema mökki
+       * @type {Object}
+       */
       valittuMokki: Object,
+      /**
+       * Muuttuja johon haetaan näkymään siirryttäessä käyttäjän valitsema aloituspäivämäärä
+       * @type {Object}
+       */
       valittuAloitusPvm: String,
+      /**
+       * Muuttuja johon haetaan näkymään siirryttäessä käyttäjän valitsema lopetuspäivämäärä
+       * @type {Object}
+       */
       valittuLopetusPvm: String,
     },
     methods: {
