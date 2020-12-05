@@ -18,10 +18,10 @@
                 <li>Varauspäivämäärä: {{tieto.varauspvm}}</li>
                 <li>Alkupäivämäärä: {{tieto.alkupvm}}</li>
                 <li>Loppupäivämäärä: {{tieto.loppupvm}}</li>
-                <li>Hinta: {{tieto.kokhinta}} €</li>
+                <li>Kokonaishinta: {{tieto.kokhinta}} €</li>
             </ul>
 
-            <label>Mökin tiedot</label>
+            <label>Varatun mökin tiedot</label>
             <ul>
                 <li>Mökin nimi: {{tieto.mokinnimi}}</li>
                 <li>Mökin osoite: {{tieto.mokinosoite}}</li>
@@ -112,17 +112,28 @@
 </script>
 
 <style scoped>
-    /* Poistettu turhat bullet pointit */
+
     ul {
+        /* Poistettu turhat bullet pointit */
         list-style: none;
         padding: 0;
-        margin: 0;
+        max-width: 20%;
+        min-width: 10em;
+        margin-left: 40%;
+        margin-right: 40%;
+        border-top: solid black 2px;
+    }
+
+    li{
+      border-bottom: solid black 2px;
+      border-left: solid black 2px;
+      border-right: solid black 2px;
     }
 
     input {
-        margin: auto;
-        margin-bottom: 1em;
-        max-width: 20em;
+      margin: auto;
+      margin-bottom: 1em;
+      max-width: 20em;
     }
 
 </style>
