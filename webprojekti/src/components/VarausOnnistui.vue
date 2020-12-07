@@ -10,6 +10,10 @@
   export default {
     name: 'varaus-onnistui',
     props: {
+      /**
+       * Muuttuja johon haetaan näkymään siirryttäessä juuri luodun varauksen varausnumero eli ID
+       * @type {Object}
+       */
       varausnro: Number,
     },
   };

@@ -52,26 +52,68 @@
   export default {
     name: 'mokkilistaus',
     props: {
+      /**
+       * Taulukko johon haetaan näkymään siirryttäessä tietokannasta mökkien tiedot
+       * @type {Object}
+       */
       mokit: Array,
     },
     data() {
       return {
-        //kayttajan valitsema mokki
+        /**
+         * Muuttuja jossa on käyttäjän valitsema mokki
+         * @type {Object}
+         */
         valittuMokki: null,
-        //Aloitus- ja lopetuspäivämäärät muodossa YYYY-MM-dd
+        /**
+         * Muuttuja jossa on varauksen aloitus päivämäärä muodossa YYYY-MM-dd
+         * @type {Object}
+         */
         aloitusPvm: null,
+        /**
+         * Muuttuja jossa on varauksen lopetus päivämäärä muodossa YYYY-MM-dd
+         * @type {Object}
+         */
         lopetusPvm: null,
-        //Aloitus- ja lopetuspäivämäärät muodossa dd.MM.YYYY
+        /**
+         * Muuttuja jossa on varauksen aloitus päivämäärä vaihdettu muotoon dd.MM.YYYY
+         * @type {Object}
+         */
         korjattuAloituspvm: null,
+        /**
+         * Muuttuja jossa on varauksen lopetus päivämäärä vaihdettu muotoon dd.MM.YYYY
+         * @type {Object}
+         */
         korjattuLopetuspvm: null,
-        //boolean tietojen syötön tarkastamiseen
+        /**
+         * Muuttuja kertoo voidaanko varauksessa edetä Asiakastietojen antamiseen
+         * @type {boolean}
+         */
         kaikkiOk: true,
+        /**
+         * Muuttuja kertoo näytetäänkö ilmoitus virheellisestä aikavälistä
+         * @type {Object}
+         */
         virheellinenAikavaliIlmoitus: Boolean,
+        /**
+         * Muuttuja kertoo näytetäänkö mökki varattu ilmoitus viesti
+         * @type {Object}
+         */
         mokkiVarattuIlmoitus: Boolean,
-        // Valittu mökki varattu/vapaa
+        /**
+         * Muuttuja kertoo onko mökki varattu/vapaa
+         * @type {Object}
+         */
         mokkiVapaa: Boolean,
-        //Kalentereissa ensimmäiset valittavat päivät
+        /**
+         * Muuttuja kertoo ensimmäisen päivän aloituspäivälle joka on mahdollista valita kalenterista
+         * @type {Object}
+         */
         kalenterin1EkaPaiva: Date,
+        /**
+         * Muuttuja kertoo ensimmäisen päivän lopetuspäivälle joka on mahdollista valita kalenterista
+         * @type {Object}
+         */
         kalenterin2EkaPaiva: Date,
       };
     },
@@ -79,7 +121,10 @@
       this.alustaKalenterinPaivat();
     },
     methods: {
-      //@click metodi kayttaa tata funktiota kun kayttaja klikkaa tiettya rivia. Funktio tallettaa klikatun mokin omaan sisaiseen muuttujaan ID:n avulla
+      /**
+       * Tätä funktiota kutsutaan kun kayttaja klikkaa tiettya rivia mökkilistauksesta.
+       * @param {number} mokkiID - Mökin ID jonka avulla Funktio tallettaa klikatun mökin omaan sisaiseen muuttujaan
+       */
       valitseRivi(mokkiID) {
         for (let i = 0; i < this.mokit.length; i++) {
           if (mokkiID === this.mokit[i].id) {
@@ -88,7 +133,10 @@
           }
         }
       },
-      //'ValitseMokkiAjalle'-napin toiminta
+      /**
+       * ValitseMokkiAjalle-napin toiminta
+       * Tarkastetaan valintojen oikeellisuus ja siirrytään tarkastaVaraustilanne funktioon jos kaikki on ok
+       */
       valitseMokkiAjalle() {
         //Nollataan virheilmoitukset
         this.nollaaVirheilmoitukset();
@@ -107,11 +155,21 @@
           this.kaikkiOk = false;
         }
       },
+      /**
+       * Nollaa kaikki virheilmoitukset
+       */
       nollaaVirheilmoitukset() {
         this.kaikkiOk = true;
         this.virheellinenAikavaliIlmoitus = false;
         this.mokkiVarattuIlmoitus = false;
       },
+      /**
+       * Funktio hakee kaikkien mokkien varaustilanteet tietokannasta ja vertaa niitä valittuun mökkiin
+       * Tämän jälkeen funktio asettaa mokkiVapaa muuttujalle arvoksi true jos mökille ei ole muita varauksia valitulle ajanjaksolle
+       *
+       * @async
+       * @function haeMokinVaraustilanne
+       */
       async haeMokinVaraustilanne() {
         try {
           const response = await fetch(
@@ -130,6 +188,14 @@
           console.error(error);
         }
       },
+      /**
+       * Funktio hakee kaikkien mokkien varaustilanteet haeMokinVaraustilanne funktiolla ja vertaa niitä valittuun mökkiin
+       * Tämän jälkeen jos mökki todettiin olevan vapaa, viedään valitun mökin tiedot ja ajanjakson tiedot ylemmälle tasolle App.vueen
+       * Myös tieto napinpainalluksesta viedään App.vueen ja tämä saa aikaan näkymän vaihtumisen App.vuen kautta.
+       *
+       * @async
+       * @function tarkastaVaraustilanne
+       */
       async tarkastaVaraustilanne() {
         //Kutsutaan ensin funktiota joka hakee varaustilanteen tietokannasta ja asettaa tuloksen muuttujaan mokkiVapaa
         await this.haeMokinVaraustilanne();
@@ -148,7 +214,9 @@
           console.log('Mökki varmistettu varatuksi');
         }
       },
-      //Alustaa molempien kalentereiden päivämäärät nykyhetki ja nykyhetki + 1pv
+      /**
+       * Alustaa molempien kalentereiden päivämäärät nykyhetki ja nykyhetki + 1pv
+       */
       alustaKalenterinPaivat() {
         //Luodaan päivämuuttuja
         let paiva = new Date();
@@ -158,6 +226,9 @@
         paiva.setDate(paiva.getDate() + 1);
         this.kalenterin2EkaPaiva = paiva.toISOString().split('T')[0];
       },
+      /**
+       * Muuntaa päivämäärät YYYY-MM-dd -muodosta dd.MM.YYYY -muotoon
+       */
       muunnaPaivamaarat() {
         let dateFormat = require('dateformat');
         this.korjattuAloituspvm = dateFormat(this.aloitusPvm, 'dd.mm.yyyy');
