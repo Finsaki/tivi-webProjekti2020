@@ -169,6 +169,7 @@ app.get('/api/varaukset/pvm', function(req, res) {
       console.log('Database error!' + err);
     }
   })();
+
 });
 
 //Lisää tietokantaan uuden asiakkaan ja luo asiakkaasta + mökistä uuden varauksen
@@ -218,6 +219,7 @@ app.post('/api/asiakkaat/uusi', function(req, res) {
       console.log('Database error!' + err);
     }
   })();
+
 });
 
 let server = app.listen(8081, function() {

@@ -87,7 +87,7 @@
          * Asiakkaan tekemän varauksen numero
          * @type {?number}
          */
-        varausnro: null
+        varausnro: null,
       };
     },
     mounted() {
