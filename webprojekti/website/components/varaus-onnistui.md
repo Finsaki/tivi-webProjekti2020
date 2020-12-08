@@ -5,7 +5,7 @@
 <!-- @vuese:varaus-onnistui:props:start -->
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
-|varausnro|-|`Number`|`false`|-|
+|varausnro|Tähän tallennetaan App.vuesta välitetty varausnumero|`Number`|`false`|-|
 
 <!-- @vuese:varaus-onnistui:props:end -->
 

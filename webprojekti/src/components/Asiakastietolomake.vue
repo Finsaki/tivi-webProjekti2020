@@ -4,19 +4,19 @@
         <p class="lihavoitu">Olet varaamassa mökkiä:</p>
         <p class="korostettu">{{valittuMokki.nimi}}, {{valittuMokki.osoite}}, max. {{valittuMokki.hlomaara}} hlö,
             {{valittuMokki.hinta}} €/päivä</p>
-        <p><b>Ajanjaksolle</b> {{korjattuAloituspvm}} - {{korjattuLopetuspvm}}</p>
+        <p class="lihavoitu">Ajanjaksolle {{korjattuAloituspvm}} - {{korjattuLopetuspvm}}</p>
         <p>Syötä tietosi alla oleviin kenttiin. Täytäthän kaikki kentät.</p>
         <form v-on:submit.prevent="teeVaraus">
             <label>Etunimi</label>
-            <input v-model="asiakas.etunimi" type="text" pattern="[a-zA-Z]+" ref="kohdista"/>
+            <input v-model="asiakas.etunimi" type="text" pattern="[a-zA-ZÅÄÖåäö]+" ref="kohdista"/>
             <label>Sukunimi</label>
-            <input v-model="asiakas.sukunimi" type="text" pattern="[a-zA-Z]+"/>
+            <input v-model="asiakas.sukunimi" type="text" pattern="[a-zA-ZÅÄÖåäö]+"/>
             <label>Katuosoite</label>
-            <input v-model="asiakas.katuosoite" type="text" pattern="[a-zA-Z 0-9-]+"/>
+            <input v-model="asiakas.katuosoite" type="text" pattern="[a-zA-ZÅÄÖåäö 0-9-]+"/>
             <label>Postinumero</label>
             <input v-model="asiakas.postinro" type="text" pattern="[0-9]{5}" maxlength="5" minlength="5"/>
             <label>Kaupunki</label>
-            <input v-model="asiakas.kaupunki" type="text" pattern="[a-zA-Z]+"/>
+            <input v-model="asiakas.kaupunki" type="text" pattern="[a-zA-ZÅÄÖåäö]+"/>
             <label>Puhelinnumero </label>
             <input v-model="asiakas.puhnro" type="text" placeholder="esim. 0501234567" pattern="[0-9]{10}"
                    maxlength="10" minlength="10"/>
@@ -34,6 +34,10 @@
     name: 'asiakastietolomake',
     data() {
       return {
+        /**
+         * Asiakas-olio, johon asetetaan sekä käyttäjän lomakkeelle syöttämiä tietoja, että App.vuesta haettuja tietoja.
+         * @type {Object}
+         */
         asiakas: {
           etunimi: null,
           sukunimi: null,
@@ -47,10 +51,20 @@
           hinta: this.valittuMokki.hinta,
           mokkiid: this.valittuMokki.id,
         },
-        //Virheilmoituksen näkyvyyden muuttuja
+        /**
+         * Virheilmoituksen näkyvyyden muuttuja, esiasetus false
+         * @type Boolean
+         */
         virhe: false,
-        //Muodollisesti korjattujen päivämäärien muuttujat
+        /**
+         * Muodollisesti korjatun päivämäärän muuttuja
+         * @type String
+         */
         korjattuAloituspvm: String,
+        /**
+         * Muodollisesti korjatun päivämäärän muuttuja
+         * @type String
+         */
         korjattuLopetuspvm: String,
       };
     },
@@ -77,7 +91,15 @@
       valittuLopetusPvm: String,
     },
     methods: {
-      //käyttäjä painaa tee varaus -nappia
+      /**
+       * Suoritetaan, kun käyttäjä painaa 'Tee varaus'-nappia
+       * @async
+       * @function teeVaraus()
+       *
+       * Funktio tarkastaa että kaikki tiedot on syötetty ja ovat validissa muodossa, erityisesti päivämäärät ovat oikein.
+       * Tekee POST-pyynnön tietokantaan ja välittää asiakkaan ja mökin tiedot sekä syötetyt päivämäärät.
+       * POST-pyynnön onnistuessa välittää varausnumeron App.vueen.
+       */
       async teeVaraus() {
         this.virhe = false;
         //console.log(this.asiakas);
@@ -123,12 +145,18 @@
           };
         }
       },
+      /**
+       * Suoritetaan kun käyttäjä painaa Peruuta-nappia.
+       * Välittää App.vueen eventin 'peruutaNappi'
+       */
       //Käyttäjä painaa peruuta-nappia
       peruutaVaraus() {
         console.log('Varaus epäonnistui');
         this.$emit('peruutaNappi');
       },
-      //Muutetaan päivämäärien muoto YYYY-MM-dd -> dd.MM.YYYY
+      /**
+       * Muuttaa päivämäärien muodon YYYY-MM-dd -> dd.MM.YYYY ja asettaa ne muuttujiin
+       */
       muunnaPaivamaarat() {
         let dateFormat = require('dateformat');
         this.korjattuAloituspvm = dateFormat(this.valittuAloitusPvm, 'dd.mm.yyyy');
@@ -141,7 +169,7 @@
 <style scoped>
     .korostettu {
         font-weight: bold;
-        color: firebrick;
+        color: blue;
     }
     .lihavoitu {
         font-weight: bold;

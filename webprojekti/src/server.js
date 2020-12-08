@@ -172,7 +172,11 @@ app.get('/api/varaukset/pvm', function(req, res) {
 
 });
 
-//Lisää tietokantaan uuden asiakkaan ja luo asiakkaasta + mökistä uuden varauksen
+/**
+ * POST-kutsu: Lisää tietokantaan uuden asiakkaan ja luo asiakkaasta + mökistä uuden varauksen
+ *
+ * Palauttaa käyttäjälle varaus-taulukon kyselyn tuloksen JSON-stringinä.
+ */
 app.post('/api/asiakkaat/uusi', function(req, res) {
   console.log('POST-pyyntö');
   let jsonObj = req.body;
