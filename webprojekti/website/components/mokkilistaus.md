@@ -5,7 +5,7 @@
 <!-- @vuese:mokkilistaus:props:start -->
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
-|mokit|-|`Array`|`false`|-|
+|mokit|Taulukko johon haetaan näkymään siirryttäessä tietokannasta mökkien tiedot|`Array`|`false`|-|
 
 <!-- @vuese:mokkilistaus:props:end -->
 

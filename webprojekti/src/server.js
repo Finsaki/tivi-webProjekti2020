@@ -222,7 +222,7 @@ app.get('/api/varaukset/id', function(req, res) {
 /**
  * GET-kutsu: Tarkastaa onko pyydetyllä mökillä pyydetyille päivämäärille jo varausta tietokannassa
  *
- * Palauttaa true tai false
+ * Palauttaa true tai tietokannan vastauksen varatusta mökistä
  *
  * @async
  */
@@ -244,7 +244,7 @@ app.get('/api/varaukset/pvm', function(req, res) {
           [id, startDate, startDate, endDate, endDate, startDate, endDate]);
       console.log(rows);
       if (rows.length > 0) {
-        res.send(false);
+        res.send(JSON.stringify(rows));
         console.log('res: false');
       } else {
         res.send(true);

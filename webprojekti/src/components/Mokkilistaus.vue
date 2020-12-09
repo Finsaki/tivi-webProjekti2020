@@ -42,7 +42,7 @@
             lopetuspäivämäärä ovat valittu</div>
         <div :class="{'virhe': true}" v-if="this.virheellinenAikavaliIlmoitus === true">Varauksen loppumispäivä ei voi olla samana päivänä tai ennen
             alkamispäivää!</div>
-        <div :class="{'virhe': true}" v-if="this.mokkiVarattuIlmoitus === true">Mökki on jo varattu kyseiselle aikavälille!</div>
+        <div :class="{'virhe': true}" v-if="this.mokkiVarattuIlmoitus === true">Mökki on jo varattuna aikavälillä {{this.varattuAlkupvm}} - {{this.varattuLoppupvm}}!</div>
         <button v-on:click="valitseMokkiAjalle">Varaa mökki valitulle ajanjaksolle</button>
 
     </div>
@@ -115,6 +115,8 @@
          * @type {Object}
          */
         kalenterin2EkaPaiva: Date,
+        varattuAlkupvm: null,
+        varattuLoppupvm: null,
       };
     },
     mounted() {
@@ -176,12 +178,15 @@
               'http://localhost:8081/api/varaukset/pvm?id=' + this.valittuMokki.id + '&start=' + this.aloitusPvm +
               '&end=' + this.lopetusPvm);
           const data = await response.json();
-          console.log('tietokantahaun vastaus: ' + data);
+          console.log('tietokantahaun vastaus: ' + JSON.stringify(data));
           if (data === true) {
             this.mokkiVapaa = true;
             console.log('asetettu mokin arvoksi true');
           } else {
             this.mokkiVapaa = false;
+            let dateFormat = require('dateformat');
+            this.varattuAlkupvm = dateFormat(data[0].ALKUPVM, 'dd.mm.yyyy');
+            this.varattuLoppupvm = dateFormat(data[0].LOPPUPVM, 'dd.mm.yyyy');
             console.log('asetettu mokin arvoksi false');
           }
         } catch (error) {

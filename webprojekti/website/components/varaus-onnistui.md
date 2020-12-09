@@ -5,7 +5,7 @@
 <!-- @vuese:varaus-onnistui:props:start -->
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
-|varausnro|Tähän tallennetaan App.vuesta välitetty varausnumero|`Number`|`false`|-|
+|varausnro|Muuttuja johon haetaan näkymään siirryttäessä juuri luodun varauksen varausnumero eli ID|`Number`|`false`|-|
 
 <!-- @vuese:varaus-onnistui:props:end -->
 

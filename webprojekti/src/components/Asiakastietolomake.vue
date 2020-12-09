@@ -94,7 +94,7 @@
       /**
        * Suoritetaan, kun käyttäjä painaa 'Tee varaus'-nappia
        * @async
-       * @function teeVaraus()
+       * @function teeVaraus
        *
        * Funktio tarkastaa että kaikki tiedot on syötetty ja ovat validissa muodossa, erityisesti päivämäärät ovat oikein.
        * Tekee POST-pyynnön tietokantaan ja välittää asiakkaan ja mökin tiedot sekä syötetyt päivämäärät.
@@ -149,7 +149,6 @@
        * Suoritetaan kun käyttäjä painaa Peruuta-nappia.
        * Välittää App.vueen eventin 'peruutaNappi'
        */
-      //Käyttäjä painaa peruuta-nappia
       peruutaVaraus() {
         console.log('Varaus epäonnistui');
         this.$emit('peruutaNappi');
