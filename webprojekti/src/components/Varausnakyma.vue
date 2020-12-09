@@ -144,6 +144,7 @@
         margin-left: 40%;
         margin-right: 40%;
         border-top: solid black 2px;
+        word-break: break-word;
     }
 
     li{
