@@ -73,7 +73,7 @@
       };
     },
     methods: {
-        /**
+        /**@vuese
          * Funktio hakee varauksen tiedot tietokannasta ja tekee niistä taulukon.
          *
          * @async

@@ -91,7 +91,7 @@
       valittuLopetusPvm: String,
     },
     methods: {
-      /**
+      /**@vuese
        * Suoritetaan, kun käyttäjä painaa 'Tee varaus'-nappia
        * @async
        * @function teeVaraus
@@ -145,7 +145,7 @@
           };
         }
       },
-      /**
+      /**@vuese
        * Suoritetaan kun käyttäjä painaa Peruuta-nappia.
        * Välittää App.vueen eventin 'peruutaNappi'
        */
@@ -153,7 +153,7 @@
         console.log('Varaus epäonnistui');
         this.$emit('peruutaNappi');
       },
-      /**
+      /**@vuese
        * Muuttaa päivämäärien muodon YYYY-MM-dd -> dd.MM.YYYY ja asettaa ne muuttujiin
        */
       muunnaPaivamaarat() {

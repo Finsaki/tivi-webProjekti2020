@@ -12,13 +12,13 @@
   export default {
     name: 'navipalkki',
     methods: {
-      /**
+      /**@vuese
        * Vie tiedon Uusi varaus -napin painamisesta App.vueen
        */
       uusiVarausToiminto() {
         this.$emit('uusiVarausNappi');
       },
-      /**
+      /**@vuese
        * Vie tiedon Oma varaus -napin painamisesta App.vueen
        */
       omaVarausToiminto() {

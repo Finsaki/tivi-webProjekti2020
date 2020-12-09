@@ -123,7 +123,7 @@
       this.alustaKalenterinPaivat();
     },
     methods: {
-      /**
+      /** @vuese
        * Tätä funktiota kutsutaan kun kayttaja klikkaa tiettya rivia mökkilistauksesta.
        * @param {number} mokkiID - Mökin ID jonka avulla Funktio tallettaa klikatun mökin omaan sisaiseen muuttujaan
        */
@@ -135,7 +135,7 @@
           }
         }
       },
-      /**
+      /** @vuese
        * ValitseMokkiAjalle-napin toiminta
        * Tarkastetaan valintojen oikeellisuus ja siirrytään tarkastaVaraustilanne funktioon jos kaikki on ok
        */
@@ -157,7 +157,7 @@
           this.kaikkiOk = false;
         }
       },
-      /**
+      /**@vuese
        * Nollaa kaikki virheilmoitukset
        */
       nollaaVirheilmoitukset() {
@@ -165,7 +165,7 @@
         this.virheellinenAikavaliIlmoitus = false;
         this.mokkiVarattuIlmoitus = false;
       },
-      /**
+      /**@vuese
        * Funktio hakee kaikkien mokkien varaustilanteet tietokannasta ja vertaa niitä valittuun mökkiin
        * Tämän jälkeen funktio asettaa mokkiVapaa muuttujalle arvoksi true jos mökille ei ole muita varauksia valitulle ajanjaksolle
        *
@@ -193,7 +193,7 @@
           console.error(error);
         }
       },
-      /**
+      /**@vuese
        * Funktio hakee kaikkien mokkien varaustilanteet haeMokinVaraustilanne funktiolla ja vertaa niitä valittuun mökkiin
        * Tämän jälkeen jos mökki todettiin olevan vapaa, viedään valitun mökin tiedot ja ajanjakson tiedot ylemmälle tasolle App.vueen
        * Myös tieto napinpainalluksesta viedään App.vueen ja tämä saa aikaan näkymän vaihtumisen App.vuen kautta.
@@ -219,7 +219,7 @@
           console.log('Mökki varmistettu varatuksi');
         }
       },
-      /**
+      /**@vuese
        * Alustaa molempien kalentereiden päivämäärät nykyhetki ja nykyhetki + 1pv
        */
       alustaKalenterinPaivat() {
@@ -231,7 +231,7 @@
         paiva.setDate(paiva.getDate() + 1);
         this.kalenterin2EkaPaiva = paiva.toISOString().split('T')[0];
       },
-      /**
+      /**@vuese
        * Muuntaa päivämäärät YYYY-MM-dd -muodosta dd.MM.YYYY -muotoon
        */
       muunnaPaivamaarat() {

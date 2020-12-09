@@ -1,6 +1,5 @@
 <template>
     <div id="app">
-        <!--<img alt="Vue logo" src="./assets/logo.png">-->
         <navipalkki @uusiVarausNappi="uusiVarausNappi" @omaVarausNappi="omaVarausNappi"></navipalkki>
         <mokkilistaus :mokit="mokit"
                       @valitse:mokki="valitseMokki"
@@ -94,7 +93,7 @@
       this.getMokit();
     },
     methods: {
-      /**
+      /**@vuese
        * Funktio hakee kaikkien mokkien tiedot tietokannasta ja tallentaa ne mokit lista-muuttujaan. Listaa kayttaa Mokkilistaus.vue
        *
        * @async
@@ -121,28 +120,28 @@
           console.error(error);
         }
       },
-      /**
+      /**@vuese
        * Funktio tallettaa Mokkilistaus.vue:sta tulevan mökin tiedot valittuMokki muuttujaan
        * @param {Object} mokki - Yhden mökin tiedot sisältävä objekti
        */
       valitseMokki(mokki) {
         this.valittuMokki = mokki;
       },
-      /**
+      /**@vuese
        * Funktio tallettaa Mokkilistaus.vue:sta tulevan aloituspäivämäärän aloitusPvm muuttujaan
        * @param {Object} aloitusPvm - Käyttäjän valitsema varauksen alkupäivä Date muotoisena
        */
       valitseAloitusPvm(aloitusPvm) {
         this.aloitusPvm = aloitusPvm;
       },
-      /**
+      /**@vuese
        * Funktio tallettaa Mokkilistaus.vue:sta tulevan lopetuspäivämäärän lopetusPvm muuttujaan
        * @param {Object} lopetusPvm - Käyttäjän valitsema varauksen loppupäivä Date muotoisena
        */
       valitseLopetusPvm(lopetusPvm) {
         this.lopetusPvm = lopetusPvm;
       },
-      /**
+      /**@vuese
        * Navipalkin 'uusi varaus'-napin toiminto, siirtää näkymän takaisin mökkinäkymään.
        */
       uusiVarausNappi() {
@@ -151,7 +150,7 @@
         this.naytaVarausnakyma = false;
         this.naytaVarausOnnistui = false;
       },
-      /**
+      /**@vuese
        * Navipalkin 'oma varaus'-napin toiminto, siirtää näkymän Varauksen tarkastelu näkymään
        */
       omaVarausNappi() {
@@ -160,7 +159,7 @@
         this.naytaMokkinakyma = false;
         this.naytaVarausOnnistui = false;
       },
-      /**
+      /**@vuese
        * Mökkilistauksen 'valitse mökki'-napin toiminto, siirtää näkymän Asiakasnäkymään
        */
       valitseMokkiAjalleNappi() {
@@ -169,7 +168,7 @@
         this.naytaAsiakasNakyma = true;
         this.naytaVarausOnnistui = false;
       },
-      /**
+      /**@vuese
        * Asiakasnäkymän peruuta-napin toiminto, siirtää näkymän takaisin Mökkinäkymään
        */
       peruutaNappi() {
@@ -178,7 +177,7 @@
         this.naytaMokkinakyma = true;
         this.naytaVarausOnnistui = false;
       },
-      /**
+      /**@vuese
        * Asettaa Varaus onnistui -näkymän nykyiseksi näkymäksi kun varaus viedään loppuun onnistuneesti Asiakasnäkymässä
        */
       varausOnnistunut() {
@@ -187,7 +186,7 @@
         this.naytaVarausnakyma = false;
         this.naytaMokkinakyma = false;
       },
-      /**
+      /**@vuese
        * Funktio ottaa vastaan Asiakastietolomakkeesta välitetyn muuttujan omaan muuttujaan App.vuessa
        * @param {number} varausnro - App.vuelle Asiakastietolomake.vuesta välitetty varauksen id arvo
        */
