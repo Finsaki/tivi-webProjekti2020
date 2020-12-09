@@ -55,21 +55,42 @@
 
     data() {
       return {
+      /**
+       * Muuttuja jossa on varauksen id
+       * @type {string}
+       */
         id: '',
+      /**
+       * Muuttuja johon tallennetaan tietokannasta haetut varaustiedot
+       * @type {array}
+       */
         tiedot: [],
-        virhe: false,
+      /**
+       * Muuttuja joka kertoo onko tapahtunut virhe
+       * @type {boolean}
+       */
+      virhe: false,
       };
     },
     methods: {
+        /**
+         * Funktio hakee varauksen tiedot tietokannasta ja tekee niistä taulukon.
+         *
+         * @async
+         * @function haeVaraus
+         */
       async haeVaraus() {
         //alustaa sivun aina haettaessa
         this.tiedot = [];
         try {
           let id = this.id;
+          //ensin haetaan varaustiedot
           const response = await fetch('http://localhost:8081/api/varaukset/id?id=' + id);
           const data = await response.json();
+          //varaustiedoista saadun mökki id:n perusteella haetaan mökin tiedot
           const response2 = await fetch('http://localhost:8081/api/mokit/id?id=' + data[0].MOKKIID);
           const data2 = await response2.json();
+          //varaustiedoista saadun asiakasid:n perusteella haetaan asiakkaan tiedot
           const response3 = await fetch('http://localhost:8081/api/asiakkaat/id?id=' + data[0].ASIAKASID);
           const data3 = await response3.json();
           console.log(data);
@@ -79,6 +100,7 @@
           let alkupvm = new Date(data[0].ALKUPVM);
           let loppupvm = new Date(data[0].LOPPUPVM);
           let dateFormat = require('dateformat');
+          //tiedot laitetaan taulukkon
           this.tiedot.push({
             'id': data[0].ID,
             'mokkiid': data[0].MOKKIID,

@@ -1,7 +1,7 @@
 <template>
   <div>
       <img :src="require(`@/assets/logoVM.png`)" alt="firman logo" width="75" height="75">
-      <p>Vuonosen Mökit! Mökinvuokrausta jo vuodesta 1932!<br><b>Yhteys:</b> info@vuonosenmokit.fi</p>
+      <p>Vuonosen Mökit. Luotettavaa mökinvuokrausta jo vuodesta 1932!<br><b>Yhteys:</b> info@vuonosenmokit.fi</p>
   </div>
 </template>
 

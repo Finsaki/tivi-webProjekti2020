@@ -1,13 +1,52 @@
+/**
+ * Muuttuja joka mahdollistaa express-ominaisuuden käytön
+ * @type {require}
+ */
 let express = require('express');
+/**
+ * Muuttuja joka käyttää express-ominaisuutta
+ */
 let app = express();
+/**
+ * Muuttuja joka mahdollistaa url-ominaisuuden käytön
+ * @type {require}
+ */
 let url = require('url');
+/**
+ * Muuttuja joka mahdollistaa cors-ominaisuuden käytön
+ * @type {require}
+ */
 let cors = require('cors');
+/**
+ * Muuttuja joka mahdollistaa bodyParser-ominaisuuden käytön
+ * @type {require}
+ */
 let bodyParser = require('body-parser');
+/**
+ * Muuttuja joka mahdollistaa mysql-ominaisuuden käytön
+ * @type {require}
+ */
 let mysql = require('mysql');
+/**
+ * Muuttuja joka mahdollistaa path-ominaisuuden käytön
+ * @type {require}
+ */
 let path = require('path');
+/**
+ * Muuttuja joka mahdollistaa util-ominaisuuden käytön
+ * @type {require}
+ */
 let util = require('util');
+/**
+ * Muuttuja joka mahdollistaa request-ominaisuuden käytön
+ * @type {require}
+ */
 let request = require('request');
 
+/**
+ * Muuttuja joka määrittää tietokantayhteyden
+ * @type {object}
+ */
 let con = mysql.createConnection({
   host: 'localhost',
   user: 'olso',
@@ -21,14 +60,19 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, './public')));
 
+/**
+ * Muuttuja joka määrittää tietokantahaun yhteyden tietokantaan
+ *
+ */
 const query = util.promisify(con.query).bind(con);
 
-app.get('/', function(req, res) {
-
-  res.send('Hello WOrlds!');
-
-});
-
+/**
+ * GET-kutsu: Hakee kaikkien mokkien tiedot tietokannasta
+ *
+ * Palauttaa tiedot JSON-muodossa
+ *
+ * @async
+ */
 app.get('/api/mokit', function(req, res) {
   let sql = 'SELECT * FROM mokki';
   let string;
@@ -47,6 +91,13 @@ app.get('/api/mokit', function(req, res) {
   })();
 });
 
+/**
+ * GET-kutsu: Hakee yksittäisen mökin tiedot tietokannasta id-numeron perusteella
+ *
+ * Palauttaa tiedot JSON-muodossa
+ *
+ * @async
+ */
 app.get('/api/mokit/id', function(req, res) {
   let q = url.parse(req.url, true).query;
   let id = q.id;
@@ -66,6 +117,13 @@ app.get('/api/mokit/id', function(req, res) {
   })();
 });
 
+/**
+ * GET-kutsu: Hakee kaikkien asiakkaiden tiedot tietokannasta
+ *
+ * Palauttaa tiedot JSON-muodossa
+ *
+ * @async
+ */
 app.get('/api/asiakkaat', function(req, res) {
   let sql = 'SELECT * FROM asiakas';
   let string;
@@ -84,6 +142,13 @@ app.get('/api/asiakkaat', function(req, res) {
   })();
 });
 
+/**
+ * GET-kutsu: Hakee yksittäisen asiakkaan tiedot tietokannasta id-numeron perusteella
+ *
+ * Palauttaa tiedot JSON-muodossa
+ *
+ * @async
+ */
 app.get('/api/asiakkaat/id', function(req, res) {
   let q = url.parse(req.url, true).query;
   let id = q.id;
@@ -103,6 +168,13 @@ app.get('/api/asiakkaat/id', function(req, res) {
   })();
 });
 
+/**
+ * GET-kutsu: Hakee kaikkien varausten tiedot tietokannasta
+ *
+ * Palauttaa tiedot JSON-muodossa
+ *
+ * @async
+ */
 app.get('/api/varaukset', function(req, res) {
   let sql = 'SELECT * FROM varaus';
   let string;
@@ -121,6 +193,13 @@ app.get('/api/varaukset', function(req, res) {
   })();
 });
 
+/**
+ * GET-kutsu: Hakee yksittäisen varauksen tiedot tietokannasta id-numeron perusteella
+ *
+ * Palauttaa tiedot JSON-muodossa
+ *
+ * @async
+ */
 app.get('/api/varaukset/id', function(req, res) {
   let q = url.parse(req.url, true).query;
   let id = q.id;
@@ -140,7 +219,13 @@ app.get('/api/varaukset/id', function(req, res) {
   })();
 });
 
-//Tarkastaa onko pyydetyllä mökillä pyydetyille päivämäärille jo varausta tietokannassa
+/**
+ * GET-kutsu: Tarkastaa onko pyydetyllä mökillä pyydetyille päivämäärille jo varausta tietokannassa
+ *
+ * Palauttaa true tai false
+ *
+ * @async
+ */
 app.get('/api/varaukset/pvm', function(req, res) {
   //Parsitaan osoitteesta id, alkuaika ja loppuaika
   let q = url.parse(req.url, true).query;
@@ -176,6 +261,8 @@ app.get('/api/varaukset/pvm', function(req, res) {
  * POST-kutsu: Lisää tietokantaan uuden asiakkaan ja luo asiakkaasta + mökistä uuden varauksen
  *
  * Palauttaa käyttäjälle varaus-taulukon kyselyn tuloksen JSON-stringinä.
+ *
+ * @async
  */
 app.post('/api/asiakkaat/uusi', function(req, res) {
   console.log('POST-pyyntö');
@@ -226,6 +313,9 @@ app.post('/api/asiakkaat/uusi', function(req, res) {
 
 });
 
+/**
+ * Funktio käynnistää paikallisen serverin
+ */
 let server = app.listen(8081, function() {
   let host = server.address().address;
   let port = server.address().port;
