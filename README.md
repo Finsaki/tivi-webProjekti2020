@@ -25,11 +25,14 @@ About the finished Project
 The commits, comments and data in the project is in Finnish.
 
 This project contains a Vue based website that allows the user to book cabins.
-The cabins are fetched from mySQL database and the results are shown in the browser
-through localhost server. When the user makes a booking, the information
+The cabins are fetched from mySQL database with REST API call and the results are shown in the browser
+through localhost server by default. When the user makes a booking, the information
 about the user and the booking gets saved into the same database.
 
-The code can be found in the directory webprojekti.
-Screenshots about the working project are found in the directory screenshots.
-The layout of the mySQL database can be found in mvtietokanta.sql.
-Documentation for the vue components is found in webprojekti/VueDoc. The documentation is made with vuese.
+Locations
+
+- The website code can be found in the directory webprojekti.
+- Screenshots about the working project are found in the directory screenshots.
+- Information about the REST API calls are found in the text file REST.txt.
+- The layout of the mySQL database can be found in mvtietokanta.sql.
+- Documentation for the vue components is found in webprojekti/VueDoc. The documentation is made with vuese.
