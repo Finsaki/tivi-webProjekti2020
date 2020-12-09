@@ -1,9 +1,9 @@
 # tivi-webProjekti2020
 This is the repository for university web-project group assignment
 
-Project instructions in finnish:
+*************************************
 
-Projektityö =) B-)
+Project instructions in Finnish:
 
 Tavoite
 Toteutetaan ”Web-sovelluskehitys” -kurssilla projektityönä pieni web-projekti, jossa on
@@ -14,24 +14,22 @@ JSON-formaattina, mutta muitakin formaatteja voi halutessaan tukea. Asiakkaan ja
 palvelimen kommunikointi toteutetaan asynkronisesti.
 Projektityö toteutetaan 2-3 opiskelijan ryhmätyönä.
 
-Työvaiheet
-Projektityö noudattaa seuraavia vaiheita:
-1. työryhmiin järjestäytyminen ja aiheen valinta,
-2. pienen määrittelydokumentin kirjoittaminen, jossa kuvataan projektin tavoite ja jossa
-on mukana käyttötapauskaaviot sekä mahdollisesti käyttöliittymäkuvauksia.
-Lisäksi dokumentissa voi olla mukana REST-apin kuvaus (vaikka tämä kuuluukin
-suunnitteludokumenttiin),
-3. työn toteutus ja
-4. katselmointi.
-
 Huomioitavia seikkoja
 REST-apin tulee toimia molempiin suuntiin. Kyselyjen muodot ja päivitettävät tiedot tulee
 validoida. Yksikkötestit ovat suotavia. Suunnitteludokumenttia ei tehdä, mutta esim. JSDoc
 kannattaa ottaa käyttöön.
 
-Palautus
-Ryhmä käyttää versionhallintaa työssään. Palautus tapahtuu julkaisemalla GitLab-osoite
-opettajille (report-oikeudet), jotta työ on tarkastettavissa.
+**************************************
+About the finished Project
 
-Katselmointi
-Viimeisellä projektiviikolla työ katselmoidaan yhdessä.
+The commits, comments and data in the project is in Finnish.
+
+This project contains a Vue based website that allows the user to book cabins.
+The cabins are fetched from mySQL database and the results are shown in the browser
+through localhost server. When the user makes a booking, the information
+about the user and the booking gets saved into the same database.
+
+The code can be found in the directory webprojekti.
+Screenshots about the working project are found in the directory screenshots.
+The layout of the mySQL database can be found in mvtietokanta.sql.
+Documentation for the vue components is found in webprojekti/VueDoc. The documentation is made with vuese.
