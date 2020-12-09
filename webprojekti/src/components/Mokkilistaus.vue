@@ -42,7 +42,7 @@
             lopetuspäivämäärä ovat valittu</div>
         <div :class="{'virhe': true}" v-if="this.virheellinenAikavaliIlmoitus === true">Varauksen loppumispäivä ei voi olla samana päivänä tai ennen
             alkamispäivää!</div>
-        <div :class="{'virhe': true}" v-if="this.mokkiVarattuIlmoitus === true">Mökki on jo varattuna aikavälillä {{this.varattuAlkupvm}} - {{this.varattuLoppupvm}}!</div>
+        <div :class="{'virhe': true}" v-if="this.mokkiVarattuIlmoitus === true">Mökki on jo varattuna aikavälillä {{this.varattunaAikavalilla}}!</div>
         <button v-on:click="valitseMokkiAjalle">Varaa mökki valitulle ajanjaksolle</button>
 
     </div>
@@ -115,8 +115,11 @@
          * @type {Object}
          */
         kalenterin2EkaPaiva: Date,
-        varattuAlkupvm: null,
-        varattuLoppupvm: null,
+        /**
+         * Muuttuja, johon asetetaan mahdollinen aikaväli, jolloin valittu mökki jo varattuna
+         *
+         */
+        varattunaAikavalilla: '',
       };
     },
     mounted() {
@@ -185,8 +188,14 @@
           } else {
             this.mokkiVapaa = false;
             let dateFormat = require('dateformat');
-            this.varattuAlkupvm = dateFormat(data[0].ALKUPVM, 'dd.mm.yyyy');
-            this.varattuLoppupvm = dateFormat(data[0].LOPPUPVM, 'dd.mm.yyyy');
+            //Haetaan datasta varatut päivämäärät ja asetetaan muuttujaan varattunaAikavalilla
+            this.varattunaAikavalilla = dateFormat(data[0].ALKUPVM, 'dd.mm.yyyy') + ' - ' + dateFormat(data[0].LOPPUPVM, 'dd.mm.yyyy');
+            //Jos haetulla aikavälillä enemmän kuin yksi varaus
+            if (data.length >= 1){
+              for(let i = 1; i < data.length; i++){
+                this.varattunaAikavalilla += ' ja ' + dateFormat(data[i].ALKUPVM, 'dd.mm.yyyy') + ' - ' + dateFormat(data[i].LOPPUPVM, 'dd.mm.yyyy');
+              }
+            }
             console.log('asetettu mokin arvoksi false');
           }
         } catch (error) {
