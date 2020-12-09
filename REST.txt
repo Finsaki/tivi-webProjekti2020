@@ -1,0 +1,71 @@
+
+Kuvaus REST-rajapinnan toiminnallisuudesta.
+
+
+
+GET-kutsu '/api/mokit' hakee kaikkien mokkien tiedot tietokannasta
+
+Palauttaa tiedot JSON-muodossa:{"numOfRows":5,"rows":[{"ID":1,"NIMI":"Merituuli","OSOITE":"Vimparaitti 57, 49400, Hamina",
+"HINTA":150,"HLOMAARA":6,"KUVAUS":"Upea mökki rauhallisella merenrantasijainnilla"},{"ID":2,"NIMI":"Kuningas",
+"OSOITE":"Taidemaalarinkatu 5, 00430, Helsinki","HINTA":90,"HLOMAARA":4,"KUVAUS":"Urbaanimpaa mökkeilyä kasvualueen kupeessa"},
+{"ID":3,"NIMI":"Kalastaja","OSOITE":"Koviannokantie 144, 09220, Lohja","HINTA":75,"HLOMAARA":2,
+"KUVAUS":"Kalastajan unelmakohde, järvelle matkaa 5m!"},{"ID":4,"NIMI":"Rauhala","OSOITE":"Suurniityntie 290, 05720, Hyvinkää",
+"HINTA":60,"HLOMAARA":2,"KUVAUS":"Rauhan tyyssija aarniometsän keskellä"},{"ID":6,"NIMI":"Huvilius",
+"OSOITE":"Hakoisten kartano, 14240, Janakkala","HINTA":350,"HLOMAARA":15,"KUVAUS":"Suuri huvila järven rannalla isoihin tapahtumiin"}]}
+ 
+
+
+GET-kutsu '/api/mokit/id' hakee yksittäisen mökin tiedot tietokannasta id-numeron perusteella
+
+Palauttaa tiedot JSON-muodossa: {"ID":2,"NIMI":"Kuningas","OSOITE":"Taidemaalarinkatu 5, 00430, Helsinki",
+"HINTA":90,"HLOMAARA":4,"KUVAUS":"Urbaanimpaa mökkeilyä kasvualueen kupeessa"}
+
+
+
+GET-kutsu '/api/asiakkaat' hakee kaikkien asiakkaiden tiedot tietokannasta
+
+Palauttaa tiedot JSON-muodossa: {"numOfRows":2,"rows":[{"ID":1,"ETUNIMI":"Rumpu","SUKUNIMI":"Omena",
+"KATUOSOITE":"Haarakatu 5","POSTINRO":"04004","KAUPUNKI":"Kippokaupunki","EMAIL":"omena@rio.biz",
+"PUHNRO":"0308822928"},{"ID":2,"ETUNIMI":"Omppu","SUKUNIMI":"Lemppu","KATUOSOITE":"Kiitokatu 8 B 8",
+"POSTINRO":"02800","KAUPUNKI":"Kippuri","EMAIL":"lemppu@rigmamarole.fi","PUHNRO":"0932289322"}]}
+
+ 
+
+GET-kutsu '/api/asiakkaat/id' hakee yksittäisen asiakkaan tiedot tietokannasta id-numeron perusteella
+
+Palauttaa tiedot JSON-muodossa: {"ID":1,"ETUNIMI":"Rumpu","SUKUNIMI":"Omena","KATUOSOITE":"Haarakatu 5",
+"POSTINRO":"04004","KAUPUNKI":"Kippokaupunki","EMAIL":"omena@rio.biz","PUHNRO":"0308822928"}
+
+ 
+GET-kutsu '/api/varaukset' hakee kaikkien varausten tiedot tietokannasta
+
+Palauttaa tiedot JSON-muodossa: {"numOfRows":2,"rows":[{"ID":1001,"MOKKIID":2,"ASIAKASID":1,"VARAUSPVM":"2020-12-04T10:50:08.000Z",
+"ALKUPVM":"2020-12-07T22:00:00.000Z","LOPPUPVM":"2020-12-11T22:00:00.000Z","KOKHINTA":360},
+{"ID":1002,"MOKKIID":1,"ASIAKASID":2,"VARAUSPVM":"2020-12-04T11:19:51.000Z","ALKUPVM":"2021-01-05T22:00:00.000Z",
+"LOPPUPVM":"2021-01-15T22:00:00.000Z","KOKHINTA":1500}]}
+
+ 
+
+GET-kutsu '/api/varaukset/id' hakee yksittäisen varauksen tiedot tietokannasta id-numeron perusteella
+
+Palauttaa tiedot JSON-muodossa: {"ID":1002,"MOKKIID":1,"ASIAKASID":2,"VARAUSPVM":"2020-12-04T11:19:51.000Z","
+ALKUPVM":"2021-01-05T22:00:00.000Z","LOPPUPVM":"2021-01-15T22:00:00.000Z","KOKHINTA":1500}
+
+ 
+
+GET-kutsu '/api/varaukset/pvm' tarkastaa onko pyydetyllä mökillä pyydetyille päivämäärille jo varausta tietokannassa
+
+Palauttaa true tai ajalle osuvien varausten tiedot JSON-muodossa:
+{"ID":1001,"MOKKIID":2,"ASIAKASID":1,"VARAUSPVM":"2020-12-04T10:50:08.000Z",
+"ALKUPVM":"2020-12-07T22:00:00.000Z","LOPPUPVM":"2020-12-11T22:00:00.000Z","KOKHINTA":360}
+
+
+POST-kutsu '/api/asiakkaat/uusi' lisää tietokantaan uuden asiakkaan ja luo asiakkaasta + mökistä uuden varauksen
+
+Vie tiedot JSON-muodossa: {"etunimi":"Hansu","sukunimi":"Hinhi","katuosoite":"Katu 5 A 76", "postinro": "12345", 
+"kaupunki": "Hanhilinna", "email": "hansu.pulkka@hotmail.com", "puhnro": "2990222", "mokkiid": "2", 
+"alkupvm": "2020-11-29", "loppupvm": "2020-12-10", "hinta": "50"}
+
+Palauttaa käyttäjälle JSON-muotoisen stringin, joka kertoo onnistuneesta tietokannan muokkauksesta: 
+{"fieldCount":0,"affectedRows":1,"insertId":1003,"serverStatus":2,"warningCount":0,"message":"","protocol41":true,"changedRows":0}
+ 
