@@ -36,3 +36,4 @@ Locations
 - Information about the REST API calls are found in the text file REST.txt.
 - The layout of the mySQL database can be found in mvtietokanta.sql.
 - Documentation for the vue components is found in webprojekti/VueDoc. The documentation is made with vuese.
+# tivi-webProjekti2020
